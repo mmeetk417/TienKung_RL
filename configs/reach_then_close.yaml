@@ -1,0 +1,392 @@
+# Runnable MuJoCo CPU configuration.  Asset/physics/actuator values marked
+# starting_point_unvalidated are migration calibration starts, not final values.
+platform:
+  operating_system: ubuntu-22.04
+  architecture: x86_64
+  python_version: '3.11'
+  mujoco_version: 3.11.0
+  pytorch_version: 2.13.0+cpu
+  backend: mujoco
+  device: cpu
+  num_envs: 128
+  worker_threads: 8
+
+asset:
+  source_urdf_path: tienkung_rl/assets/tienkung2_pro/source/tiangong2.0_pro_with_hands.urdf
+  runtime_mjcf_path: tienkung_rl/assets/tienkung2_pro/mjcf/reach_then_close.xml
+  viewer_mjcf_path: tienkung_rl/assets/tienkung2_pro/mjcf/reach_then_close.viewer.xml
+  visual_mesh_directory: tienkung_rl/assets/tienkung2_pro/source/meshes
+  collision_manifest_path: tienkung_rl/assets/tienkung2_pro/patches/collisions.yaml
+  generation_manifest_path: tienkung_rl/assets/tienkung2_pro/manifest.json
+  # Calibration values remain starting points until the required reports are accepted.
+  asset_version: tienkung2_pro_mujoco_asset_v3
+  calibration_status: starting_point_unvalidated
+
+physics:
+  version: mujoco_cpu_physics_v3
+  physics_dt_s: 0.005
+  decimation: 4
+  policy_dt_s: 0.020
+  gravity_m_s2: [0.0, 0.0, -9.81]
+  solver:
+    integrator: implicitfast
+    solver: newton
+    position_iterations: 8
+    no_slip_iterations: 4
+    line_search_iterations: 4
+    tolerance: 1.0e-8
+  table_material:
+    name: table_calibration_start
+    sliding_friction: 1.0
+    torsional_friction: 0.005
+    rolling_friction: 0.0001
+    restitution: 0.0
+  robot_material:
+    name: robot_calibration_start
+    sliding_friction: 1.0
+    torsional_friction: 0.005
+    rolling_friction: 0.0001
+    restitution: 0.0
+  cylinder_material:
+    name: cylinder_calibration_start
+    sliding_friction: 0.8
+    torsional_friction: 0.005
+    rolling_friction: 0.0001
+    restitution: 0.0
+  contact:
+    margin_m: 0.002
+    gap_m: 0.0
+    impedance: [0.9, 0.95, 0.001]
+    reference_time_s: 0.02
+    reference_damping: 1.0
+    maximum_contacts: 4096
+    illegal_impulse_threshold_n_s: 0.05
+  # Object-side softness, previously hidden in patches/scene.yaml.
+  cylinder_contact:
+    margin_m: 0.0
+    gap_m: 0.0
+    impedance: [0.8, 0.92, 0.005]
+    reference_time_s: 0.04
+    reference_damping: 1.0
+    maximum_contacts: 4096
+    illegal_impulse_threshold_n_s: 0.05
+  actuator_calibration:
+    version: mujoco_position_actuator_calibration_v2
+    status: starting_point_unvalidated
+    control_mode: position
+    arm:
+      joint_names:
+        - shoulder_pitch_r_joint
+        - shoulder_roll_r_joint
+        - shoulder_yaw_r_joint
+        - elbow_pitch_r_joint
+        - elbow_yaw_r_joint
+        - wrist_pitch_r_joint
+        - wrist_roll_r_joint
+      stiffness_n_m_per_rad: [120.0, 40.0, 20.0, 120.0, 20.0, 60.0, 10.0]
+      damping_n_m_s_per_rad: [4.5, 2.25, 1.5, 5.0, 1.5, 2.5, 0.75]
+      effort_limit_n_m: [90.0, 90.0, 34.0, 34.0, 23.0, 6.0, 6.0]
+      velocity_limit_rad_s: [9.0, 3.8, 5.0, 5.0, 10.0, 7.0, 7.0]
+    hand:
+      joint_names:
+        - right_thumb_1_joint
+        - right_thumb_2_joint
+        - right_index_1_joint
+        - right_middle_1_joint
+        - right_ring_1_joint
+        - right_little_1_joint
+      stiffness_n_m_per_rad: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+      damping_n_m_s_per_rad: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
+      effort_limit_n_m: [5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+      velocity_limit_rad_s: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  calibration_status: starting_point_unvalidated
+
+task:
+  version: reach_then_close_task_v5
+  scene:
+    table_center_m: [0.70, 0.0, 0.7958]
+    table_size_m: [0.80, 0.90, 0.05]
+    cylinder_origin_xy_m: [0.52529190, -0.26195379]
+    cylinder_table_clearance_m: 0.002
+    maximum_episode_steps: 3000
+  observation:
+    version: reach_observation_106_v1
+    fields:
+      - {name: observed_joint_positions, dimension: 19, scale: 1.0, frame: joint, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: scaled_observed_joint_velocities, dimension: 19, scale: 0.10, frame: joint, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: grasp_center_world_position, dimension: 3, scale: 1.0, frame: environment_world, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: tcp_world_quaternion, dimension: 4, scale: 1.0, frame: environment_world, quaternion_order: wxyz, canonicalize_scalar_nonnegative: false}
+      - {name: cylinder_world_position, dimension: 3, scale: 1.0, frame: environment_world, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: cylinder_world_quaternion, dimension: 4, scale: 1.0, frame: environment_world, quaternion_order: wxyz, canonicalize_scalar_nonnegative: false}
+      - {name: cylinder_to_grasp_center_position, dimension: 3, scale: 1.0, frame: environment_world, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: scaled_cylinder_linear_velocity, dimension: 3, scale: 0.25, frame: environment_world, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: scaled_cylinder_angular_velocity, dimension: 3, scale: 0.25, frame: environment_world, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: right_hand_contact_force_norms, dimension: 12, scale: 0.10, frame: contact, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: internal_physical_action_state, dimension: 13, scale: 1.0, frame: actuator_target, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: cylinder_relative_quaternion_in_tcp, dimension: 4, scale: 1.0, frame: tcp, quaternion_order: wxyz, canonicalize_scalar_nonnegative: false}
+      - {name: scaled_cylinder_relative_linear_velocity, dimension: 3, scale: 0.25, frame: grasp_center, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: option_active_progress_support, dimension: 3, scale: 1.0, frame: option, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: grasp_position_error_in_cylinder, dimension: 3, scale: 1.0, frame: cylinder, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+      - {name: current_tcp_relative_target_quaternion, dimension: 4, scale: 1.0, frame: target_tcp, quaternion_order: wxyz, canonicalize_scalar_nonnegative: true}
+      - {name: approach_direction_error_in_cylinder, dimension: 3, scale: 1.0, frame: cylinder, quaternion_order: none, canonicalize_scalar_nonnegative: false}
+    observed_joint_names:
+      - shoulder_pitch_r_joint
+      - shoulder_roll_r_joint
+      - shoulder_yaw_r_joint
+      - elbow_pitch_r_joint
+      - elbow_yaw_r_joint
+      - wrist_pitch_r_joint
+      - wrist_roll_r_joint
+      - right_thumb_1_joint
+      - right_thumb_2_joint
+      - right_thumb_3_joint
+      - right_thumb_4_joint
+      - right_index_1_joint
+      - right_index_2_joint
+      - right_middle_1_joint
+      - right_middle_2_joint
+      - right_ring_1_joint
+      - right_ring_2_joint
+      - right_little_1_joint
+      - right_little_2_joint
+    contact_link_names:
+      - right_thumb_1_joint
+      - right_thumb_2_joint
+      - right_thumb_3_joint
+      - right_thumb_4_joint
+      - right_index_1_joint
+      - right_index_2_joint
+      - right_middle_1_joint
+      - right_middle_2_joint
+      - right_ring_1_joint
+      - right_ring_2_joint
+      - right_little_1_joint
+      - right_little_2_joint
+    dimension: 106
+    history_length: 1
+    clip_min: -10.0
+    clip_max: 10.0
+    world_positions_relative_to_environment_origin: true
+    nonfinite_behavior: safe_terminate_with_reason
+  action:
+    version: reach_action_7_auto_trigger_v2
+    dimension: 7
+    arm_joint_names:
+      - shoulder_pitch_r_joint
+      - shoulder_roll_r_joint
+      - shoulder_yaw_r_joint
+      - elbow_pitch_r_joint
+      - elbow_yaw_r_joint
+      - wrist_pitch_r_joint
+      - wrist_roll_r_joint
+    normalized_min: -1.0
+    normalized_max: 1.0
+    target_formula: center_plus_action_times_half_range
+    center_joint_positions_rad: [-0.1263738957212445, -0.0660230871483436, -0.005458141965984873, -1.1857244905049396, -0.4985950231880684, -0.2786493907629637, 0.040981591828081955]
+    half_range_rad: [0.35, 0.16, 0.35, 0.35, 0.50, 0.28, 0.50]
+    maximum_joint_target_step_rad: 0.01
+    distribution: bounded_tanh_normal
+  ready:
+    position_error_m: 0.005
+    orientation_error_rad: 0.10
+    dwell_time_s: 0.30
+    grasp_center_speed_m_s: 0.05
+    arm_speed_rad_s: 0.20
+    object_displacement_m: 0.015
+    object_tilt_rad: 0.7853981633974483
+    object_linear_speed_m_s: 0.05
+    object_angular_speed_rad_s: 0.50
+    contact_impulse_n_s: 0.05
+    diagnostic_only: true
+    participates_in_curriculum: false
+    grants_reward: false
+  admission:
+    position_error_m: 0.010
+    orientation_error_rad: 0.10
+    dwell_time_s: 0.30
+    grasp_center_speed_m_s: 0.05
+    object_tilt_rad: 0.7853981633974483
+    illegal_contact_impulse_n_s: 0.05
+    requires_finite_state: true
+    requires_valid_target: true
+    requires_reach_phase: true
+    dwell_required: true
+  option:
+    version: reach_then_close_auto_admission_dwell_v5
+    state_machine_version: settle_close_hold_lift_lift_hold_v2
+    settle_time_s: 0.5
+    closing_time_s: 3.5
+    hold_time_s: 1.0
+    lift_time_s: 2.0
+    lift_hold_time_s: 5.0
+    lift_height_m: 0.06
+    active_hand_joint_names: [right_thumb_1_joint, right_thumb_2_joint, right_index_1_joint, right_middle_1_joint, right_ring_1_joint, right_little_1_joint]
+    latch_arm_target_on_accept: true
+    script_starts_next_policy_step: true
+    ignore_policy_while_active: true
+    actor_update_mask_while_active: false
+    automatic_trigger_on_admission_dwell: true
+    maximum_acceptances_per_episode: 1
+  reward:
+    version: scratch_reward_auto_trigger_v4
+    potential_discount: 0.99
+    position_potential_scale_m: 0.08
+    orientation_potential_scale_rad: 0.35
+    object_displacement_scale_m: 0.020
+    position_potential_weight: 6.0
+    orientation_potential_weight: 1.0
+    step_penalty: 0.01
+    joint_velocity_penalty_weight: 0.002
+    action_rate_penalty_weight: 0.005
+    object_displacement_penalty_weight: 0.5
+    unsafe_object_displacement_penalty: 10.0
+    accepted_trigger_reward: 3.0
+    rejected_trigger_penalty: 0.0
+    admissible_wait_penalty: 0.0
+    lift_5cm_reward: 10.0
+    complete_success_reward: 50.0
+    script_failure_penalty: 25.0
+    ready_reward: 0.0
+    potential_progress_semantics: gamma_phi_next_minus_phi_current
+  termination:
+    version: reach_termination_v3
+    lift_event_height_m: 0.05
+    maximum_safe_displacement_m: 0.020
+    topple_angle_rad: 0.7853981633974483
+    drop_below_table_top_m: 0.10
+    far_xy_distance_m: 0.90
+    bilateral_contact_force_n: 0.20
+    right_arm_table_contact_force_limit_n: 5.0
+    bilateral_contact_dwell_steps: 3
+    lift_support_dwell_steps: 5
+    thumb_contact_group: thumb_side
+    opposing_contact_group: four_finger_opposing
+    lift_support_contact_group: right_hand_observation_links
+    drop_frame_semantics: object_center_z_below_table_top
+    far_frame_semantics: environment_relative_xy_norm
+    terminate_on_drop: true
+    terminate_on_illegal_contact: true
+    terminate_on_nonfinite: true
+    success_requires_option_accepted: true
+    success_requires_completed_lift_hold: true
+    success_requires_bilateral_persistent_contact: true
+    success_and_danger_mutually_exclusive: true
+    unique_primary_reason: true
+    record_all_auxiliary_reasons: true
+
+randomization:
+  version: square_prism_randomization_v1
+  radius: {distribution: uniform, minimum: 0.010, maximum: 0.015, unit: m}
+  height: {distribution: uniform, minimum: 0.080, maximum: 0.120, unit: m}
+  mass: {distribution: uniform, minimum: 0.100, maximum: 0.130, unit: kg}
+  hand_sliding_friction: {distribution: uniform, minimum: 0.7, maximum: 1.1, unit: '1'}
+  table_sliding_friction: {distribution: uniform, minimum: 0.7, maximum: 1.1, unit: '1'}
+  fixed_torsional_friction: 0.005
+  fixed_rolling_friction: 0.0001
+  independent_variables: true
+  enabled_from_stage: S0
+  inertia_model: solid_square_prism_from_sampled_geometry_and_mass
+  policy_observes_parameters: false
+  target_uses_actual_geometric_center: true
+
+curriculum:
+  version: reach_curriculum_s0_s3_v1
+  sampler_version: monotonic_mixture_sampler_v1
+  initial_stage: S0
+  monotonic: true
+  cylinder_origin_xy_m: [0.52529190, -0.26195379]
+  stages:
+    - name: S0
+      x_offset_range_m: [0.005, 0.008]
+      y_offset_range_m: [0.005, 0.008]
+      current_fraction: 1.0
+      replay_fraction: 0.0
+      boundary_fraction: 0.0
+      replay_source: none
+      corner_jitter_half_width_m: [0.0, 0.0]
+    - name: S1
+      x_offset_range_m: [0.0, 0.035]
+      y_offset_range_m: [0.0, 0.050]
+      current_fraction: 0.8
+      replay_fraction: 0.2
+      boundary_fraction: 0.0
+      replay_source: S0
+      corner_jitter_half_width_m: [0.0, 0.0]
+    - name: S2
+      x_offset_range_m: [0.0, 0.045]
+      y_offset_range_m: [0.0, 0.070]
+      current_fraction: 0.8
+      replay_fraction: 0.2
+      boundary_fraction: 0.0
+      replay_source: S1
+      corner_jitter_half_width_m: [0.0, 0.0]
+    - name: S3
+      x_offset_range_m: [0.0, 0.045]
+      y_offset_range_m: [0.0, 0.070]
+      current_fraction: 0.7
+      replay_fraction: 0.0
+      boundary_fraction: 0.3
+      replay_source: none
+      corner_jitter_half_width_m: [0.004, 0.006]
+  boundary_corners_xy_offset_m: [[0.045, 0.0], [0.0, 0.070], [0.045, 0.070]]
+  promotion_gates:
+    - {from_stage: S0, to_stage: S1, window_episodes: 2048, option_accepted_rate_min: 0.70, lift_5cm_rate_min: 0.60, complete_success_rate_min: 0.50, dangerous_rate_max: 0.10}
+    - {from_stage: S1, to_stage: S2, window_episodes: 4096, option_accepted_rate_min: 0.80, lift_5cm_rate_min: 0.70, complete_success_rate_min: 0.60, dangerous_rate_max: 0.10}
+    - {from_stage: S2, to_stage: S3, window_episodes: 8192, option_accepted_rate_min: 0.85, lift_5cm_rate_min: 0.80, complete_success_rate_min: 0.70, dangerous_rate_max: 0.10}
+  consecutive_passing_windows: 2
+  count_episode_by_stage_at_reset: true
+  ready_participates_in_promotion: false
+
+ppo:
+  version: arm_ppo_auto_option_v2
+  network:
+    actor_hidden_dimensions: [256, 256, 128]
+    critic_hidden_dimensions: [256, 256, 128]
+    activation: elu
+  rollout_steps_per_env: 1280
+  learning_epochs: 5
+  mini_batches: 4
+  actor_learning_rate: 1.0e-4
+  critic_learning_rate: 1.0e-4
+  clip_ratio: 0.2
+  value_loss_coefficient: 1.0
+  entropy_coefficient: 0.001
+  gamma: 0.99
+  gae_lambda: 0.95
+  desired_kl: 0.01
+  maximum_gradient_norm: 1.0
+  initial_continuous_std: 0.02
+  minimum_continuous_std: 0.02
+  maximum_continuous_std: 0.08
+  option_return_semantics: unit_discount_lambda_across_script
+  empty_actor_mask_behavior: skip_actor_update_without_nan
+
+run:
+  seed: 42
+  output_dir: runs/reach_then_close
+  save_interval_iterations: 10
+  maximum_iterations: 1000
+  command: tienkung-train
+  mode: train
+  code_version: 0.1.0
+  checkpoint_source: none
+
+evaluation:
+  validation_manifest_path: evaluation/manifests/validation.json
+  final_manifest_path: evaluation/manifests/final_standard_256.json
+  checkpoint_path: ''
+  training_seeds: [42, 43, 44]
+  evaluation_seeds: [1001, 1002, 1003]
+  standard_case_count: 256
+  randomized_case_count: 256
+  deterministic_actions: true
+  preliminary_thresholds:
+    option_accepted_rate_min: 0.45
+    lift_5cm_rate_min: 0.39
+    complete_success_rate_min: 0.35
+    dangerous_rate_max: 0.10
+  final_thresholds:
+    option_accepted_rate_min: 0.85
+    lift_5cm_rate_min: 0.80
+    complete_success_rate_min: 0.70
+    dangerous_rate_max: 0.10

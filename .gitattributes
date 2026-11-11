@@ -1,0 +1,1 @@
+legged_lab/assets/tienkung2_pro/meshes/*.STL filter=lfs diff=lfs merge=lfs -text

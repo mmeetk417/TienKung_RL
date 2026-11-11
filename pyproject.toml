@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = ["--strict-config", "--strict-markers"]
+pythonpath = ["rsl_rl"]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+norecursedirs = ["build", "dist", ".git", ".pytest_cache"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "rsl_rl"
+explicit_package_bases = true
+files = ["tienkung_rl", "tests"]
+exclude = ["^build/"]
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+extend-exclude = ["build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "SIM", "UP", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["F401"]
+
+[tool.ruff.format]
+docstring-code-format = true
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"

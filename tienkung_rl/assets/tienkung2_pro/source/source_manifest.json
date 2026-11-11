@@ -1,0 +1,541 @@
+{
+  "counts": {
+    "distinct_meshes": 63,
+    "links": 63,
+    "mesh_references": 126,
+    "mimic_relations": 12,
+    "movable_joints": 54,
+    "total_joints": 62
+  },
+  "mapping_rule": "URDF ../meshes/<name> -> source/meshes/<exact-name>",
+  "meshes": [
+    {
+      "path": "source/meshes/L_base_link.STL",
+      "sha256": "4be04206de23267ed11f25bfeafaaa3ec5230dcd3fdd1ec3c757e741eaf15978",
+      "size_bytes": 3614784,
+      "urdf_references": [
+        "../meshes/L_base_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/R_base_link.STL",
+      "sha256": "39014a3ba10fc32b50a3d0585dc94a6625491c1f839d129d161ef93aceef889d",
+      "size_bytes": 1462784,
+      "urdf_references": [
+        "../meshes/R_base_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/ankle_pitch_l_link.STL",
+      "sha256": "e7993478c6de1cae7ee16f40b80c3f723d8c51bde89095643eda9d7d6419283b",
+      "size_bytes": 373684,
+      "urdf_references": [
+        "../meshes/ankle_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/ankle_pitch_r_link.STL",
+      "sha256": "818816641e3bc996b877e62ee4d8fcc022326d20d437e8a023803f66b8ee3d01",
+      "size_bytes": 373684,
+      "urdf_references": [
+        "../meshes/ankle_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/ankle_roll_l_link.STL",
+      "sha256": "6239c2cdf1777e651f0b1b1043064edba571ffdfeb458c1c26b23999b2be74c8",
+      "size_bytes": 2014684,
+      "urdf_references": [
+        "../meshes/ankle_roll_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/ankle_roll_r_link.STL",
+      "sha256": "8c40ccf60f02441afae9b636c1996b93537fd9c2cc0e7c4d10944eb4e7ac44f8",
+      "size_bytes": 2017884,
+      "urdf_references": [
+        "../meshes/ankle_roll_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/camera_body_back_link.STL",
+      "sha256": "d754aaab6bb215ccfd749bad4595ffb66a7c36ece6e38a3d27094711251503d8",
+      "size_bytes": 8234584,
+      "urdf_references": [
+        "../meshes/camera_body_back_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/camera_body_front_link.STL",
+      "sha256": "ac37fbe8b3a1a698458439a2d58e402f0e40e06009b066abfd1ff88b397a7e2d",
+      "size_bytes": 8234584,
+      "urdf_references": [
+        "../meshes/camera_body_front_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/camera_head_link.STL",
+      "sha256": "a3c37e7304971b3a377accc8632f629d3ba76c678b8eab2f850fdb636ebc407e",
+      "size_bytes": 3874084,
+      "urdf_references": [
+        "../meshes/camera_head_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/elbow_pitch_l_link.STL",
+      "sha256": "4191483a3ccb27d6b16e1145ada7815ba0f73f53f25be218665845328af319a4",
+      "size_bytes": 1702684,
+      "urdf_references": [
+        "../meshes/elbow_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/elbow_pitch_r_link.STL",
+      "sha256": "17b54cb4aa9ce2a93fd9528e9fdaf4994873e7692d1d829ab87c7d8e1c1af93b",
+      "size_bytes": 1704784,
+      "urdf_references": [
+        "../meshes/elbow_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/elbow_yaw_l_link.STL",
+      "sha256": "e2af1b9b4bfbbfef3be64e4153e9cd7eae1082bf6df2954ea4a643112bececd3",
+      "size_bytes": 5549084,
+      "urdf_references": [
+        "../meshes/elbow_yaw_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/elbow_yaw_r_link.STL",
+      "sha256": "c9bbd2c54d1b56f80ffb7dd288e1bf9b58252bb1d3f959ae6b53ed44c5169925",
+      "size_bytes": 5540984,
+      "urdf_references": [
+        "../meshes/elbow_yaw_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/head_pitch_link.STL",
+      "sha256": "dae09c830d19c9e931a323cad4af7cab6b3efc945ebd36197f42f4af0f83c3ae",
+      "size_bytes": 1822784,
+      "urdf_references": [
+        "../meshes/head_pitch_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/head_roll_link.STL",
+      "sha256": "de294befe98df8e1e52edcf2d18b49ee88a76878b1180459d0380578a66336df",
+      "size_bytes": 4203884,
+      "urdf_references": [
+        "../meshes/head_roll_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/head_yaw_link.STL",
+      "sha256": "2a94ad5feadd93dfb5c426372cf529460c898364e407157ba323f73ef279e2fd",
+      "size_bytes": 958184,
+      "urdf_references": [
+        "../meshes/head_yaw_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_pitch_l_link.STL",
+      "sha256": "1403f571584d011dba5d717562e14c8597984f0880bef5bc185ebfc5a8c28a2b",
+      "size_bytes": 2165384,
+      "urdf_references": [
+        "../meshes/hip_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_pitch_r_link.STL",
+      "sha256": "a5921345cb3a7624e72add1cb915ff0e670291ce58324a0efb0c3b6532c609d7",
+      "size_bytes": 2180584,
+      "urdf_references": [
+        "../meshes/hip_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_roll_l_link.STL",
+      "sha256": "bcf1eeacab8c42a0d634a8f665bece0bc5f22816b9e1ec281c2fad010c5a89d1",
+      "size_bytes": 1024784,
+      "urdf_references": [
+        "../meshes/hip_roll_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_roll_r_link.STL",
+      "sha256": "8ab8313451562711aa854682cf5fc88a58754cfda6abd3d0d71be4f623e963a0",
+      "size_bytes": 1024784,
+      "urdf_references": [
+        "../meshes/hip_roll_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_yaw_l_link.STL",
+      "sha256": "81b334cd340afbea454db466162c5ec6b5ed9dba4bb40af518ca8b63c34298fe",
+      "size_bytes": 4086934,
+      "urdf_references": [
+        "../meshes/hip_yaw_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/hip_yaw_r_link.STL",
+      "sha256": "883753ea4d87cab681285ed8734a32c295f8c2880e10f70eb496bdf0f133a428",
+      "size_bytes": 3910034,
+      "urdf_references": [
+        "../meshes/hip_yaw_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/imu_link.STL",
+      "sha256": "ffcbf2ca514495bfbd93cd7466f87840b55bb28ea032aba34b97e0b4b512b4b0",
+      "size_bytes": 399034,
+      "urdf_references": [
+        "../meshes/imu_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/knee_pitch_l_link.STL",
+      "sha256": "68c54ddcc39b4b7c0a081e67fd5bbd2bf7bb768b415c360f1a6a0d72b5d2b6e7",
+      "size_bytes": 2629684,
+      "urdf_references": [
+        "../meshes/knee_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/knee_pitch_r_link.STL",
+      "sha256": "ebe3ac7ab29723fcbe20434566f16718cb7d3022d1ee3abbbfea48890629287c",
+      "size_bytes": 2955984,
+      "urdf_references": [
+        "../meshes/knee_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_index_1.STL",
+      "sha256": "48f8ce3d436eb448288eb02194faf27d76148db8b1d83ca64a4bc1a866bfbe33",
+      "size_bytes": 411284,
+      "urdf_references": [
+        "../meshes/left_index_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_index_2.STL",
+      "sha256": "1f6ae7c570dcfc87ba8b54b19b5c8be4804d68660b4489ee0ee684d3d137401c",
+      "size_bytes": 333684,
+      "urdf_references": [
+        "../meshes/left_index_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_little_1.STL",
+      "sha256": "cff441b2e940f3444a9bac52e82cbba585658d5d9385e3d24acec4d3517a7e24",
+      "size_bytes": 411284,
+      "urdf_references": [
+        "../meshes/left_little_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_little_2.STL",
+      "sha256": "08dfcc448aa7f16843c760dba35c46259be38608356f7f3d168b9b6afa8d4436",
+      "size_bytes": 413234,
+      "urdf_references": [
+        "../meshes/left_little_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_middle_1.STL",
+      "sha256": "45617e0af222764c1c4ea3f941c40fa303dc2a423ddeffde78bc855919226f6b",
+      "size_bytes": 411284,
+      "urdf_references": [
+        "../meshes/left_middle_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_middle_2.STL",
+      "sha256": "7b4f60c77f6d61a9023da3d4b03bc6d0b18e7edd92e00b757d663c94ed3ccfe2",
+      "size_bytes": 182884,
+      "urdf_references": [
+        "../meshes/left_middle_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_ring_1.STL",
+      "sha256": "c30bb35bc7218bbb69726e0cd3547df9d997dab1f5e65004163ca326c45ea4a8",
+      "size_bytes": 411284,
+      "urdf_references": [
+        "../meshes/left_ring_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_ring_2.STL",
+      "sha256": "24ef54ff3753ba36bdc2824fccf612f97f2966a9a2f0925d921b548d8861d2b8",
+      "size_bytes": 332484,
+      "urdf_references": [
+        "../meshes/left_ring_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_tcp_link.STL",
+      "sha256": "2e45ba934afc1d16a8b8168262ddbf7baff0f80f2259b8d02e8deb8967bea489",
+      "size_bytes": 2535484,
+      "urdf_references": [
+        "../meshes/left_tcp_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_thumb_1.STL",
+      "sha256": "4d56636582d11109194bb8afebc455fadfccad75a66800656fc1db9d9dc37386",
+      "size_bytes": 46484,
+      "urdf_references": [
+        "../meshes/left_thumb_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_thumb_2.STL",
+      "sha256": "342fdd3aa3fbb9c1c4ddc476f82fde76427a049d14c4b5f523e29436e8a09c29",
+      "size_bytes": 920484,
+      "urdf_references": [
+        "../meshes/left_thumb_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_thumb_3.STL",
+      "sha256": "dceb3bf74bec6a249907a30bb7e5ff6461b4099e7bf54e0496ab1198a88f8777",
+      "size_bytes": 482684,
+      "urdf_references": [
+        "../meshes/left_thumb_3.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/left_thumb_4.STL",
+      "sha256": "ddbee60fba2507765e1b287f9fa36db72f3f7499f3ed0722dcba2cdb09df3711",
+      "size_bytes": 155384,
+      "urdf_references": [
+        "../meshes/left_thumb_4.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/pelvis.STL",
+      "sha256": "eb36e33001f42aaabf803706ff169d649ff1d8454ae3724d778b78afef6a9b30",
+      "size_bytes": 3768484,
+      "urdf_references": [
+        "../meshes/pelvis.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_index_1.STL",
+      "sha256": "507af513f9fb5e0ef793664ad8ea65d32e6becb4f2d27f19f257f94c42423f65",
+      "size_bytes": 411884,
+      "urdf_references": [
+        "../meshes/right_index_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_index_2.STL",
+      "sha256": "3b3a3da8dabecef018a51d2ef88d64ee4661932efe73940b23c7852d389dcf4e",
+      "size_bytes": 335484,
+      "urdf_references": [
+        "../meshes/right_index_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_little_1.STL",
+      "sha256": "071eebaa3ea8ee016343d2405d5e7004c759c9d6fa4ab8c1430e63cac6e21a3e",
+      "size_bytes": 411884,
+      "urdf_references": [
+        "../meshes/right_little_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_little_2.STL",
+      "sha256": "fbd3092021fe9d435aad74f260bf0e0f5b523a463b97ad1cc92e1503b87fa25d",
+      "size_bytes": 416484,
+      "urdf_references": [
+        "../meshes/right_little_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_middle_1.STL",
+      "sha256": "bf6265ace7eba28d0b820a42b29621cc94f6234712eafecff04cb97c0450731b",
+      "size_bytes": 411884,
+      "urdf_references": [
+        "../meshes/right_middle_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_middle_2.STL",
+      "sha256": "095843c5ba0f7c8cd9f6360a814f0c5cbf82c21bddc9689d410ffe81c279c4fc",
+      "size_bytes": 182984,
+      "urdf_references": [
+        "../meshes/right_middle_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_ring_1.STL",
+      "sha256": "a3b9b988e1c82c56739aa29a92c34ee7b764bd45e0d0d345fa335610019ff71c",
+      "size_bytes": 411884,
+      "urdf_references": [
+        "../meshes/right_ring_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_ring_2.STL",
+      "sha256": "ff34cda0d9752c9d267e4ea9cad08361ca5b77431aaec136efbbcaf455686dda",
+      "size_bytes": 334784,
+      "urdf_references": [
+        "../meshes/right_ring_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_tcp_link.STL",
+      "sha256": "647072d3dd3385871e8f5505dbb68a5eb358f3efbcfa277947d4e41cce742f8e",
+      "size_bytes": 2756084,
+      "urdf_references": [
+        "../meshes/right_tcp_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_thumb_1.STL",
+      "sha256": "e8e22b8f4e93530aab461bc2c7f447fe9e5503b307814aa3d88b4a03c3612a30",
+      "size_bytes": 46884,
+      "urdf_references": [
+        "../meshes/right_thumb_1.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_thumb_2.STL",
+      "sha256": "4eb6e3c32979d2da576e85974c633d4393294279e5c55ee4f293bc6ef34f5784",
+      "size_bytes": 921984,
+      "urdf_references": [
+        "../meshes/right_thumb_2.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_thumb_3.STL",
+      "sha256": "134aac695d28dd40d3a3f4c1fc84ab52908f2e7036b28e6b017eebf96c124bf3",
+      "size_bytes": 483284,
+      "urdf_references": [
+        "../meshes/right_thumb_3.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/right_thumb_4.STL",
+      "sha256": "11bfe7d900654f4ececa84cdf399506c5bc2ef7882877f800de5f8931bb08f82",
+      "size_bytes": 155584,
+      "urdf_references": [
+        "../meshes/right_thumb_4.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_pitch_l_link.STL",
+      "sha256": "0f13a88241f981c98cb275d47a9f430647e441b4f42bdd4328a6f9ca82b0294f",
+      "size_bytes": 3042384,
+      "urdf_references": [
+        "../meshes/shoulder_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_pitch_r_link.STL",
+      "sha256": "0375bf24eaf4d61bc38d24a8d4764ba50ea37cc2bcf961320640269c82f51525",
+      "size_bytes": 3040884,
+      "urdf_references": [
+        "../meshes/shoulder_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_roll_l_link.STL",
+      "sha256": "860249ae4d6a57026e141221179ac3eb7c3c7a096660a0b8537014aa75a7cbdd",
+      "size_bytes": 2413984,
+      "urdf_references": [
+        "../meshes/shoulder_roll_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_roll_r_link.STL",
+      "sha256": "a21e80c8f7126c557c8285c6267fe9f60a6c8954336a636b1a747304b81248e3",
+      "size_bytes": 2414184,
+      "urdf_references": [
+        "../meshes/shoulder_roll_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_yaw_l_link.STL",
+      "sha256": "448a93ddb7a63e6768900e218d18a854204ce074270e9261d6a2a5187487d1b0",
+      "size_bytes": 4794484,
+      "urdf_references": [
+        "../meshes/shoulder_yaw_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/shoulder_yaw_r_link.STL",
+      "sha256": "17f9a20b9bca879a29de067e284e8de83d80d45b935c776552b29678a7a0250b",
+      "size_bytes": 4793684,
+      "urdf_references": [
+        "../meshes/shoulder_yaw_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/waist_yaw_link.STL",
+      "sha256": "76b63e5128e5b6526b9d52be37ec040fc5558159762acdc22137de5b2c099930",
+      "size_bytes": 4990684,
+      "urdf_references": [
+        "../meshes/waist_yaw_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/wrist_pitch_l_link.STL",
+      "sha256": "bda7c228afcd35c2ebfc7ce06067d02fb978a7406b45e501a322acfab48b9947",
+      "size_bytes": 2003184,
+      "urdf_references": [
+        "../meshes/wrist_pitch_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/wrist_pitch_r_link.STL",
+      "sha256": "e9fc0cb58884089a094fd6da2cd21fefee7ffa7fd54464c59cd044ff0f2b9ae1",
+      "size_bytes": 1996184,
+      "urdf_references": [
+        "../meshes/wrist_pitch_r_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/wrist_roll_l_link.STL",
+      "sha256": "2fe22a10a5b21f32419e3ea59353d0bddfeb4dd418cb7c532903d923e38598b3",
+      "size_bytes": 912384,
+      "urdf_references": [
+        "../meshes/wrist_roll_l_link.STL"
+      ]
+    },
+    {
+      "path": "source/meshes/wrist_roll_r_link.STL",
+      "sha256": "1070200859b34e477b84750c7eb9bf45fee7228c4934425e8c5e61ee627f09f4",
+      "size_bytes": 911784,
+      "urdf_references": [
+        "../meshes/wrist_roll_r_link.STL"
+      ]
+    }
+  ],
+  "notices": [
+    {
+      "path": "source/LICENSE",
+      "sha256": "3c22c7837e13946d64864d1cbd4f408aea262af507e678b9e81ff5cd38d19d6f",
+      "size_bytes": 1954
+    },
+    {
+      "path": "source/NOTICE",
+      "sha256": "dd649bc61a647605eb6e40d9cef8b2b9caccd61dc791c87cea6a1c4207bd341a",
+      "size_bytes": 539
+    },
+    {
+      "path": "source/README.md",
+      "sha256": "6f839dac178e8bec80775c4cfc41253dc532a4a6ff48438749b57d9c427d76b0",
+      "size_bytes": 908
+    }
+  ],
+  "schema_version": "tienkung2_pro_source_manifest_v1",
+  "source_origin": "legacy/isaaclab/source/legged_lab/assets/tienkung2_pro",
+  "urdf": {
+    "path": "source/tiangong2.0_pro_with_hands.urdf",
+    "sha256": "c04a37dac53e7b2b50e310c26cf645a8b1c3b84307a556b7eb853f4a5099817d",
+    "size_bytes": 65244
+  }
+}

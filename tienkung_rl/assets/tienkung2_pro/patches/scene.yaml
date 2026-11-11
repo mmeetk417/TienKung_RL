@@ -1,0 +1,39 @@
+schema_version: tienkung2_pro_scene_v1
+table:
+  body: table
+  top_geom: table_top_collision
+  leg_geom_prefix: table_leg_collision
+  leg_width_m: 0.05
+  rgba: [0.28, 0.16, 0.08, 1.0]
+cylinder:
+  body: cylinder
+  joint: cylinder_free_joint
+  geom: cylinder_collision
+  shape: square_prism
+  # Softer object-side contact response; the body remains rigid.
+  contact_condim: 4
+  nominal_from_randomization_midpoint: true
+  rgba: [0.85, 0.12, 0.08, 1.0]
+floor:
+  geom: floor
+  texture: groundplane
+  material: groundplane
+  type: plane
+  size_m: [0.0, 0.0, 0.05]
+  pos_m: [0.0, 0.0, 0.0]
+  visual_only: true
+  checker:
+    builtin: checker
+    mark: edge
+    rgb1: [0.2, 0.3, 0.4]
+    rgb2: [0.1, 0.2, 0.3]
+    markrgb: [0.8, 0.8, 0.8]
+    width: 300
+    height: 300
+    texuniform: true
+    texrepeat: [5.0, 5.0]
+    reflectance: 0.2
+collision_masks:
+  robot: {contype: 1, conaffinity: 6}
+  cylinder: {contype: 2, conaffinity: 5}
+  table: {contype: 4, conaffinity: 3}

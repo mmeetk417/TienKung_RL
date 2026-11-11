@@ -1,0 +1,67 @@
+schema_version: tienkung2_pro_patch_schema_v2
+patch_version: tienkung2_pro_mjcf_patch_v5
+asset_contract_version: tienkung2_pro_mujoco_asset_v3
+application_order:
+  - fixed_base
+  - joint_posture
+  - gravity_compensation
+  - visual_only
+  - collisions
+  - contact_groups
+  - sites
+  - actuators
+  - mimic
+  - scene
+  - metadata
+fixed_base:
+  root_body: pelvis
+  position_m: [0.0, 0.0, 0.8908]
+  quaternion_wxyz: [1.0, 0.0, 0.0, 0.0]
+  require_no_free_joint: true
+joint_posture:
+  default_fixed_position_rad: 0.0
+  fixed_position_overrides_rad:
+    hip_pitch_l_joint: -0.5
+    knee_pitch_l_joint: 1.0
+    ankle_pitch_l_joint: -0.5
+    hip_pitch_r_joint: -0.5
+    knee_pitch_r_joint: 1.0
+    ankle_pitch_r_joint: -0.5
+    shoulder_roll_l_joint: 0.1
+    elbow_pitch_l_joint: -0.3
+  home_keyframe: robot_and_scene_home
+  minimum_robot_table_clearance_m: 0.03
+gravity_compensation:
+  root_body: shoulder_pitch_r_link
+  factor: 1.0
+  include_descendants: true
+actuators:
+  source: m01.physics.actuator_calibration
+  expected_control_mode: position
+  arm_count: 7
+  hand_active_count: 6
+  metadata_fields: [stiffness_n_m_per_rad, damping_n_m_s_per_rad, effort_limit_n_m, velocity_limit_rad_s]
+mimic:
+  source: urdf.joint.mimic
+  side: right
+  equality_type: joint
+  constraint_calibration_version: right_hand_mimic_equality_v2
+  constraint_calibration_status: validated_in_mujoco_3_11_0
+  # Direct-format equality stiffness/damping measured with the hand's open,
+  # half-close, and full-close 0.8 s trajectories plus 1.0 s loaded holds.
+  solref_direct: [-10000000.0, -20000.0]
+  solimp: [0.999, 0.9999, 0.0001]
+  follower_damping_source: m01.physics.actuator_calibration.hand
+  validation_motion: 0.8_s_linear_close_plus_1.0_s_hold
+sites:
+  declaration_file: sites.yaml
+collisions:
+  declaration_file: collisions.yaml
+  source_stl_role: mixed_visual_and_right_hand_collision_mesh
+contact_groups:
+  declaration_file: contact_groups.yaml
+scene:
+  declaration_file: scene.yaml
+  physics_source: m01.physics
+  task_scene_source: m01.task.scene
+  randomization_source: m01.randomization

@@ -1,0 +1,178 @@
+{
+  "asset_version": "tienkung2_pro_mujoco_asset_v3",
+  "calibration_status": "starting_point_unvalidated",
+  "collision_calibration": {
+    "method": "visual_coverage_plus_mujoco_2s_settle_and_bidirectional_tracking",
+    "status": "starting_point_unvalidated",
+    "version": "simplified_collision_calibration_v2"
+  },
+  "generator_version": "tienkung2_pro_asset_pipeline_v3",
+  "model_summary": {
+    "nbody": 66,
+    "neq": 41,
+    "ngeom": 38,
+    "njnt": 55,
+    "nkey": 1,
+    "nmesh": 13,
+    "nq": 61,
+    "nsite": 5,
+    "nu": 13,
+    "nv": 60
+  },
+  "output_hashes": {
+    "mjcf/joint_hierarchy.json": "d55d36edbaa64838efb6edd684797ed130f4b00801689fa4bda823a94ea5cb56",
+    "mjcf/name_index.json": "50498a83894732a18f30ebb9ef2a965be5d004a773db672058c845c5d5244ef9",
+    "mjcf/reach_then_close.viewer.xml": "1cbe5df9413b8f62c907a969c864dd6eb4a3b70853af306a4835b94484c084a3",
+    "mjcf/reach_then_close.xml": "555c0bef5fb662de4eda803b5b8d09380c81f2ef33d5deec0cde5787055d9cc4",
+    "mjcf/tienkung2_pro.base.xml": "686b720e33bf9372425fff79e1091c68d24da2f41ec7f20612c3acf112cffafb",
+    "source/source_manifest.json": "b0705383d6d6f79a470a1476c4987678d23b2d5fca5ad3b435acf87789b265e0"
+  },
+  "patch_hashes": {
+    "asset_patch.yaml": "cd1f0a3fb240f3d7235be7d01dfa592f523261e88a02643bb5a83490a7ec0117",
+    "collisions.yaml": "9fbc8a901bbceaa2343ed9bbd6d7d8d6e65da37d0642ba96a176b46209200067",
+    "contact_groups.yaml": "90e74c431bd98cf26608430e0f6046f916fcd5a058662bc0f22003d78b0128d5",
+    "scene.yaml": "dd082f75bbc1bbd424709fd335af77c51642cbbc0cb5416046a55557e88bf302",
+    "schema.json": "ee15c1dcd3a0b8c5abe69b51fff2d567b2cb8a2bd576e553b425e5b527eaedf4",
+    "sites.yaml": "02de955748506530f279a0714b3a102ce07bdabe86e23a53c4ef643963f2888d"
+  },
+  "patch_version": "tienkung2_pro_mjcf_patch_v5",
+  "runtime_products": {
+    "headless": {
+      "collision_meshes_compiled": 13,
+      "model_summary": {
+        "nbody": 66,
+        "neq": 41,
+        "ngeom": 38,
+        "njnt": 55,
+        "nkey": 1,
+        "nmesh": 13,
+        "nq": 61,
+        "nsite": 5,
+        "nu": 13,
+        "nv": 60
+      },
+      "path": "mjcf/reach_then_close.xml",
+      "purpose": "training_evaluation_headless_independent_model",
+      "visual_meshes_compiled": false
+    },
+    "physical_equivalence": "viewer minus visual-only mesh assets/geoms equals headless",
+    "viewer": {
+      "collision_meshes_compiled": 13,
+      "model_summary": {
+        "nbody": 66,
+        "neq": 41,
+        "ngeom": 101,
+        "njnt": 55,
+        "nkey": 1,
+        "nmesh": 63,
+        "nq": 61,
+        "nsite": 5,
+        "nu": 13,
+        "nv": 60
+      },
+      "path": "mjcf/reach_then_close.viewer.xml",
+      "purpose": "single_environment_full_visual_viewer",
+      "visual_meshes_compiled": true
+    }
+  },
+  "scene": {
+    "cylinder_body": "cylinder",
+    "cylinder_geom": "cylinder_collision",
+    "cylinder_initial_position_m": [
+      0.5252919,
+      -0.26195379,
+      0.8728
+    ],
+    "cylinder_joint": "cylinder_free_joint",
+    "cylinder_nominal_height_m": 0.1,
+    "cylinder_nominal_mass_kg": 0.115,
+    "cylinder_nominal_radius_m": 0.0125,
+    "floor": {
+      "checker": {
+        "builtin": "checker",
+        "height": 300,
+        "mark": "edge",
+        "markrgb": [
+          0.8,
+          0.8,
+          0.8
+        ],
+        "reflectance": 0.2,
+        "rgb1": [
+          0.2,
+          0.3,
+          0.4
+        ],
+        "rgb2": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "texrepeat": [
+          5.0,
+          5.0
+        ],
+        "texuniform": true,
+        "width": 300
+      },
+      "geom": "floor",
+      "material": "groundplane",
+      "source": "rmm-sim/mj_assets/stanford_tidybot2/scene.xml",
+      "texture": "groundplane",
+      "visual_only": true
+    },
+    "measured_home_robot_table_clearance_m": 0.04419978703506828,
+    "minimum_home_robot_table_clearance_m": 0.03,
+    "table_body": "table",
+    "table_geoms": [
+      "table_top_collision",
+      "table_leg_collision_0",
+      "table_leg_collision_1",
+      "table_leg_collision_2",
+      "table_leg_collision_3"
+    ]
+  },
+  "schema_version": "tienkung2_pro_generation_manifest_v2",
+  "source_contract": {
+    "active_arm_joint_count": 7,
+    "active_hand_joint_count": 6,
+    "fixed_non_task_joint_count": 35,
+    "gravity_compensated_body_count": 21,
+    "gravity_compensated_root_body": "shoulder_pitch_r_link",
+    "mimic_relation_count": 12,
+    "movable_joint_count": 54,
+    "right_mimic_relation_count": 6,
+    "runtime_actuator_names": [
+      "shoulder_pitch_r_joint_position",
+      "shoulder_roll_r_joint_position",
+      "shoulder_yaw_r_joint_position",
+      "elbow_pitch_r_joint_position",
+      "elbow_yaw_r_joint_position",
+      "wrist_pitch_r_joint_position",
+      "wrist_roll_r_joint_position",
+      "right_thumb_1_joint_position",
+      "right_thumb_2_joint_position",
+      "right_index_1_joint_position",
+      "right_middle_1_joint_position",
+      "right_ring_1_joint_position",
+      "right_little_1_joint_position"
+    ],
+    "visual_mesh_count": 63
+  },
+  "source_manifest_sha256": "b0705383d6d6f79a470a1476c4987678d23b2d5fca5ad3b435acf87789b265e0",
+  "source_urdf_sha256": "c04a37dac53e7b2b50e310c26cf645a8b1c3b84307a556b7eb853f4a5099817d",
+  "tool": {
+    "base_numeric_format": "MuJoCo mj_saveLastXML 3.11.0 canonical output",
+    "generator_sha256": "e4e782aa89fa1c920585ef7b3794f4fa3191d9d09bb6dd2e71ad73b1f7943e59",
+    "input_order": "UTF-8 path byte order",
+    "name": "mujoco",
+    "patch_numeric_format": ".12g",
+    "urdf_import_options": {
+      "discardvisual": "false",
+      "fusestatic": "false",
+      "strippath": "false"
+    },
+    "version": "3.11.0"
+  },
+  "visual_meshes_aggregate_sha256": "262ca21ac2349141659946c1a222aaaa24cf9994ab6fdbb4328bb371729e6b37"
+}

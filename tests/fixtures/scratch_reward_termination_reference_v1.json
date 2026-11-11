@@ -1,0 +1,22 @@
+{
+  "fixture_version": "scratch_reward_termination_reference_v1",
+  "legacy_source": "legacy/isaaclab/source/legged_lab/envs/manipulation/reach_then_close_base_env.py",
+  "reward": {
+    "position_potential_scale_m": 0.08,
+    "orientation_potential_scale_rad": 0.35,
+    "object_displacement_scale_m": 0.02,
+    "potential_progress_semantics": "gamma_phi_next_minus_phi_current"
+  },
+  "termination": {
+    "drop_below_table_top_m": 0.1,
+    "drop_frame_semantics": "object_center_z_below_table_top",
+    "far_xy_distance_m": 0.9,
+    "far_frame_semantics": "environment_relative_xy_norm",
+    "bilateral_contact_force_n": 0.2,
+    "bilateral_contact_dwell_steps": 3,
+    "lift_support_dwell_steps": 5,
+    "thumb_contact_group": "thumb_side",
+    "opposing_contact_group": "four_finger_opposing",
+    "lift_support_contact_group": "right_hand_observation_links"
+  }
+}

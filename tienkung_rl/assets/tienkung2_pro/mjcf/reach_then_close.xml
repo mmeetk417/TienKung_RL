@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="tienkung2_pro_reach_then_close">
+  <compiler angle="radian" autolimits="true" meshdir="../source/meshes" />
+  <asset>
+    <mesh name="R_base_link" file="R_base_link.STL" />
+    <mesh name="right_thumb_1" file="right_thumb_1.STL" />
+    <mesh name="right_thumb_2" file="right_thumb_2.STL" />
+    <mesh name="right_thumb_3" file="right_thumb_3.STL" />
+    <mesh name="right_thumb_4" file="right_thumb_4.STL" />
+    <mesh name="right_index_1" file="right_index_1.STL" />
+    <mesh name="right_index_2" file="right_index_2.STL" />
+    <mesh name="right_middle_1" file="right_middle_1.STL" />
+    <mesh name="right_middle_2" file="right_middle_2.STL" />
+    <mesh name="right_ring_1" file="right_ring_1.STL" />
+    <mesh name="right_ring_2" file="right_ring_2.STL" />
+    <mesh name="right_little_1" file="right_little_1.STL" />
+    <mesh name="right_little_2" file="right_little_2.STL" />
+    <material name="robot_calibration_start" rgba="0.75 0.75 0.75 1" />
+    <material name="table_calibration_start" rgba="0.28 0.16 0.08 1" />
+    <material name="cylinder_calibration_start" rgba="0.85 0.12 0.08 1" />
+    <texture name="groundplane" type="2d" builtin="checker" height="300" mark="edge" markrgb="0.8 0.8 0.8" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" width="300" />
+    <material name="groundplane" reflectance="0.2" texrepeat="5 5" texture="groundplane" texuniform="true" />
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" pos="0 0 0" size="0 0 0.05" conaffinity="0" contype="0" density="0" group="1" material="groundplane" />
+    <body name="pelvis" pos="0 0 0.8908" quat="1 0 0 0">
+      <inertial pos="-0.000979 0.00068 -0.076922" quat="0.347458 0.359399 0.612975 0.611855" diaginertia="0.0257935 0.0242445 0.015802" mass="5.639" />
+      <body name="hip_roll_l_link" pos="0 0.028 -0.0857">
+        <inertial pos="-0.001848 0.055849 -0.036017" quat="0.242041 0.661501 0.270146 0.656394" diaginertia="0.0035288 0.00296741 0.00101678" mass="0.672983" />
+        <joint name="hip_roll_l_joint" pos="0 0 0" axis="1 0 0" range="-0.785398 0.785398" actuatorfrcrange="-235 235" />
+        <body name="hip_pitch_l_link" pos="0 0.122 -0.046">
+          <inertial pos="0.001081 -8.8e-05 -0.013133" quat="0.703908 -0.0464278 -0.0604083 0.706193" diaginertia="0.0155995 0.0108766 0.00930186" mass="3.95191" />
+          <joint name="hip_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="-2.79253 2.0944" actuatorfrcrange="-330 330" />
+          <body name="hip_yaw_l_link" pos="0 -0.00015 -0.0987">
+            <inertial pos="0.004102 -0.006542 -0.121068" quat="0.685682 -0.0129439 0.0149542 0.727633" diaginertia="0.0533758 0.0495596 0.0178685" mass="6.6708" />
+            <joint name="hip_yaw_l_joint" pos="0 0 0" axis="0 0 1" range="-1.0472 1.0472" actuatorfrcrange="-235 235" />
+            <body name="knee_pitch_l_link" pos="0 0.00010715 -0.3013">
+              <inertial pos="0.00018 0.001915 -0.178653" quat="0.741662 0.0200239 0.0403837 0.669257" diaginertia="0.0309319 0.0304477 0.00269639" mass="2.31269" />
+              <joint name="knee_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="0 2.3911" actuatorfrcrange="-330 330" />
+              <body name="ankle_pitch_l_link" pos="0 0 -0.4">
+                <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" diaginertia="3.2e-05 1.8e-05 1.8e-05" mass="0.111609" />
+                <joint name="ankle_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="-1.22173 0.523599" actuatorfrcrange="-55 55" />
+                <body name="ankle_roll_l_link">
+                  <inertial pos="0.021235 0 -0.032883" quat="0 0.747289 0 0.6645" diaginertia="0.0063132 0.006055 0.000954799" mass="1.01738" />
+                  <joint name="ankle_roll_l_joint" pos="0 0 0" axis="1 0 0" range="-0.523599 0.523599" actuatorfrcrange="-55 55" />
+                </body>
+              </body>
+              <geom name="left_lower_leg_collision" type="capsule" fromto="0 0 -0.03 0 0 -0.36" size="0.055" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+            </body>
+            <geom name="left_upper_leg_collision" type="capsule" fromto="0 0 -0.03 0 0 -0.28" size="0.065" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+          </body>
+        </body>
+      </body>
+      <body name="hip_roll_r_link" pos="0 -0.028 -0.0857">
+        <inertial pos="-0.001848 -0.055849 -0.036017" quat="-0.242041 0.661501 -0.270146 0.656394" diaginertia="0.0035288 0.00296741 0.00101678" mass="0.672983" />
+        <joint name="hip_roll_r_joint" pos="0 0 0" axis="1 0 0" range="-0.785398 0.785398" actuatorfrcrange="-235 235" />
+        <body name="hip_pitch_r_link" pos="0 -0.122 -0.046">
+          <inertial pos="0.001081 8.8e-05 -0.013133" quat="0.706193 -0.0604083 -0.0464278 0.703908" diaginertia="0.0155995 0.0108766 0.00930186" mass="3.95191" />
+          <joint name="hip_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="-2.79253 2.0944" actuatorfrcrange="-330 330" />
+          <body name="hip_yaw_r_link" pos="0 0 -0.0987">
+            <inertial pos="0.004102 0.006542 -0.121068" quat="0.727633 0.0149542 -0.0129439 0.685682" diaginertia="0.0533758 0.0495596 0.0178685" mass="6.6708" />
+            <joint name="hip_yaw_r_joint" pos="0 0 0" axis="0 0 1" range="-1.0472 1.0472" actuatorfrcrange="-235 235" />
+            <body name="knee_pitch_r_link" pos="0 9.9938e-05 -0.3013">
+              <inertial pos="0.00018 -0.001915 -0.178653" quat="0.669257 0.0403837 0.0200239 0.741662" diaginertia="0.0309319 0.0304477 0.00269639" mass="2.31269" />
+              <joint name="knee_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="0 2.3911" actuatorfrcrange="-330 330" />
+              <body name="ankle_pitch_r_link" pos="0 0.00099989 -0.4">
+                <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" diaginertia="3.2e-05 1.8e-05 1.8e-05" mass="0.111609" />
+                <joint name="ankle_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="-1.22173 0.523599" actuatorfrcrange="-55 55" />
+                <body name="ankle_roll_r_link">
+                  <inertial pos="0.021235 0 -0.032883" quat="0 0.747289 0 0.6645" diaginertia="0.0063132 0.006055 0.000954799" mass="1.01738" />
+                  <joint name="ankle_roll_r_joint" pos="0 0 0" axis="1 0 0" range="-0.523599 0.523599" actuatorfrcrange="-55 55" />
+                </body>
+              </body>
+              <geom name="right_lower_leg_collision" type="capsule" fromto="0 0 -0.03 0 0 -0.36" size="0.055" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+            </body>
+            <geom name="right_upper_leg_collision" type="capsule" fromto="0 0 -0.03 0 0 -0.28" size="0.065" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+          </body>
+        </body>
+      </body>
+      <body name="waist_yaw_link">
+        <inertial pos="-0.000568 0.00056 0.231488" quat="0.999972 0.000616538 0.00686914 0.00289132" diaginertia="0.429083 0.379054 0.177094" mass="22" />
+        <joint name="body_yaw_joint" pos="0 0 0" axis="0 0 1" range="-2.96706 3.14159" actuatorfrcrange="-91 91" />
+        <body name="head_yaw_link" pos="-0.002 0 0.56508">
+          <inertial pos="-0.000202 0.000454 0.007248" quat="0.433079 0.441542 -0.597789 0.510032" diaginertia="0.000106995 9.43893e-05 7.56158e-05" mass="0.088397" />
+          <joint name="head_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708" actuatorfrcrange="-6.3 6.3" />
+          <body name="head_pitch_link" pos="0.01455 0 0.0304" quat="0.991445 0 0.130526 0">
+            <inertial pos="-0.000274 0.004118 2.3e-05" quat="0.413438 0.428118 -0.562489 0.573925" diaginertia="9.53048e-05 9.17215e-05 5.39737e-05" mass="0.23046" />
+            <joint name="head_pitch_joint" pos="0 0 0" axis="0 1 0" range="-0.436332 0.436332" actuatorfrcrange="-6.3 6.3" />
+            <body name="head_roll_link">
+              <inertial pos="0.022467 0.001208 0.053952" quat="0.346499 0.643432 0.575935 0.366379" diaginertia="0.00336804 0.0031191 0.00210286" mass="0.844627" />
+              <joint name="head_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.453786 0.453786" actuatorfrcrange="-6.3 6.3" />
+              <body name="camera_head_link" pos="0.075191 0.010935 0.074436" quat="0.430457 -0.560985 0.560987 -0.430459">
+                <inertial pos="0.010986 -0.000307 -0.016475" quat="0.5 0.5 0.5 0.5" diaginertia="8e-05 7.7e-05 1.6e-05" mass="0.1" />
+              </body>
+              <geom name="head_collision" type="sphere" pos="0.03 0 0.08" size="0.11" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+            </body>
+          </body>
+        </body>
+        <body name="shoulder_pitch_l_link" pos="0 0.1444 0.37712" quat="0.999048 0.0436192 0 0">
+          <inertial pos="0.007494 0.064184 -2e-05" quat="-0.138986 0.691655 0.140135 0.694737" diaginertia="0.001247 0.00108933 0.00101366" mass="1.0327" />
+          <joint name="shoulder_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="-2.96706 2.96706" actuatorfrcrange="-91 91" />
+          <body name="shoulder_roll_l_link" pos="0 0.068 0">
+            <inertial pos="0.002389 0.002259 -0.048236" quat="0.699313 0.0770166 0.101863 0.703317" diaginertia="0.00131352 0.00100748 0.000904004" mass="0.440997" />
+            <joint name="shoulder_roll_l_joint" pos="0 0 0" axis="1 0 0" range="-0.261799 2.61799" actuatorfrcrange="-95 95" />
+            <body name="shoulder_yaw_l_link" pos="0 0 -0.1025">
+              <inertial pos="0.008319 0.002686 -0.112525" quat="0.995878 0.0242664 -0.0546699 -0.0681906" diaginertia="0.00974687 0.00961144 0.00120969" mass="1.36503" />
+              <joint name="shoulder_yaw_l_joint" pos="0 0 0" axis="0 0 1" range="-2.96706 2.96706" actuatorfrcrange="-35 35" />
+              <body name="elbow_pitch_l_link" pos="0.02 0 -0.1975">
+                <inertial pos="-0.014694 -7.2e-05 -0.026081" quat="0.379625 0.379479 -0.591752 0.601424" diaginertia="0.000406631 0.0003754 0.00022197" mass="0.246311" />
+                <joint name="elbow_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="-2.61799 0.261799" actuatorfrcrange="-35 35" />
+                <body name="elbow_yaw_l_link" pos="-0.02 0 -0.0543">
+                  <inertial pos="0.000158 0.001503 -0.069535" quat="0.999822 0.0181014 -0.00149408 -0.00511209" diaginertia="0.00310803 0.00303822 0.000576752" mass="0.986828" />
+                  <joint name="elbow_yaw_l_joint" pos="0 0 0" axis="0 0 1" range="-2.96706 2.96706" actuatorfrcrange="-24 24" />
+                  <body name="wrist_pitch_l_link" pos="0 0 -0.1887">
+                    <inertial pos="0.005362 0.00064 -0.018812" quat="0.644732 0.26898 0.632563 0.334417" diaginertia="0.000114565 0.000108775 7.06597e-05" mass="0.262007" />
+                    <joint name="wrist_pitch_l_joint" pos="0 0 0" axis="0 1 0" range="-0.785398 1.0472" actuatorfrcrange="-6.3 6.3" />
+                    <body name="wrist_roll_l_link" pos="0 0 -0.02">
+                      <inertial pos="0.000801 8.4e-05 -0.029302" quat="0.506055 0.49387 0.49387 0.506055" diaginertia="0.000116 0.000110024 6.89756e-05" mass="0.131751" />
+                      <joint name="wrist_roll_l_joint" pos="0 0 0" axis="1 0 0" range="-1.65806 1.309" actuatorfrcrange="-6.3 6.3" />
+                      <body name="left_tcp_link" pos="0 0 -0.0848">
+                        <inertial pos="0.000415 0.000651 0.017052" quat="0.599399 0.34738 -0.636768 0.338488" diaginertia="0.000109077 8.72313e-05 8.26919e-05" mass="0.218186" />
+                        <body name="L_base_link" quat="0.000563088 0.707107 -0.707106 -0.000563088">
+                          <inertial pos="0.00125805 0.00181116 0.0694418" quat="0.999573 -0.00566995 0.00338406 -0.02848" diaginertia="0.000598652 0.000500492 0.000184612" mass="0.38756" />
+                          <body name="left_thumb_1" pos="0.01696 -0.02045 0.06635">
+                            <inertial pos="0.000853472 -0.00482216 -0.00482" quat="0.717045 0.65204 0.104666 0.223014" diaginertia="2.13881e-07 1.68735e-07 1.24674e-07" mass="0.00483" />
+                            <joint name="left_thumb_1_joint" pos="0 0 0" axis="0 0 1" range="0 1.24616" actuatorfrcrange="-50 50" />
+                            <body name="left_thumb_2" pos="0.010735 -0.0090002 -0.0065" quat="0.429475 0.429477 0.56174 0.561738">
+                              <inertial pos="-0.0194666 0.0163039 -0.00803847" quat="0.302305 0.639599 -0.30189 0.639051" diaginertia="1.70013e-05 1.42937e-05 5.29607e-06" mass="0.05759" />
+                              <joint name="left_thumb_2_joint" pos="0 0 0" axis="0 0 -1" range="0 0.48" actuatorfrcrange="-50 50" />
+                              <body name="left_thumb_3" pos="-0.037617 0.041486 -0.0008">
+                                <inertial pos="-0.00946662 0.00207562 -0.00719989" quat="0.455874 0.540645 -0.455723 0.540554" diaginertia="1.28966e-06 1.22915e-06 5.82719e-07" mass="0.00985" />
+                                <joint name="left_thumb_3_joint" pos="0 0 0" axis="0 0 -1" range="0 0.3578" actuatorfrcrange="-50 50" />
+                                <body name="left_thumb_4" pos="-0.014957 0.017012 -0.0012">
+                                  <inertial pos="-0.00604904 0.00861521 -0.00600331" quat="0.437334 0.551597 -0.44343 0.554842" diaginertia="3.37472e-07 3.27117e-07 1.19552e-07" mass="0.00552" />
+                                  <joint name="left_thumb_4_joint" pos="0 0 0" axis="0 0 -1" range="0 0.2775" actuatorfrcrange="-50 50" />
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="left_index_1" pos="-0.00028533 -0.020275 0.13695" quat="0.694659 0.719339 0 0">
+                            <inertial pos="0.000852716 0.0119736 0.00599989" quat="0.474966 0.52733 -0.469884 0.524919" diaginertia="2.05873e-06 1.95619e-06 5.46223e-07" mass="0.01229" />
+                            <joint name="left_index_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <body name="left_index_2" pos="0.0080993 0.031095 0.001">
+                              <inertial pos="0.00408345 0.0192602 0.00500003" quat="0.380746 0.596795 -0.379234 0.595861" diaginertia="1.14024e-06 1.12462e-06 1.08348e-07" mass="0.00633" />
+                              <joint name="left_index_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" />
+                            </body>
+                          </body>
+                          <body name="left_middle_1" pos="-0.00028533 -0.00095 0.1371" quat="0.707105 0.707108 0 0">
+                            <inertial pos="0.000852878 0.0119736 0.00599989" quat="0.477083 0.528768 -0.467753 0.523453" diaginertia="2.05876e-06 1.9562e-06 5.46243e-07" mass="0.01229" />
+                            <joint name="left_middle_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <body name="left_middle_2" pos="0.0080996 0.031095 0.001">
+                              <inertial pos="0.00471132 0.0203464 0.00500014" quat="0.378343 0.597374 -0.378343 0.597374" diaginertia="1.43878e-06 1.42175e-06 1.17529e-07" mass="0.00681" />
+                              <joint name="left_middle_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" />
+                            </body>
+                          </body>
+                          <body name="left_ring_1" pos="-0.00028533 0.018271 0.13628" quat="0.725387 0.688341 0 0">
+                            <inertial pos="0.000852611 0.0119737 0.00599988" quat="0.475236 0.527557 -0.469622 0.524681" diaginertia="2.05874e-06 1.95619e-06 5.46218e-07" mass="0.01229" />
+                            <joint name="left_ring_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <body name="left_ring_2" pos="0.0080989 0.031095 0.001">
+                              <inertial pos="0.004083 0.0192603 0.005" quat="0.596677 0.379442 -0.596678 0.379441" diaginertia="7.81801e-07 7.72474e-07 8.47216e-08" mass="0.00633" />
+                              <joint name="left_ring_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" />
+                            </body>
+                          </body>
+                          <body name="left_little_1" pos="-0.00028533 0.037422 0.13446" quat="0.743137 0.669139 0 0">
+                            <inertial pos="0.000851753 0.0119737 0.00599989" quat="0.474577 0.527033 -0.47032 0.525177" diaginertia="2.05873e-06 1.95619e-06 5.46221e-07" mass="0.01229" />
+                            <joint name="left_little_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <body name="left_little_2" pos="0.0080966 0.031096 0.001">
+                              <inertial pos="0.00273891 0.0161633 0.00500586" quat="0.381249 0.595524 -0.381249 0.595524" diaginertia="6.6906e-07 6.5812e-07 8.59895e-08" mass="0.00525" />
+                              <joint name="left_little_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" />
+                            </body>
+                          </body>
+                          <geom name="left_palm_collision" type="box" pos="0 0 0.065" size="0.03 0.055 0.07" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                  <geom name="left_forearm_collision" type="capsule" fromto="0 0 0 0 0 -0.2" size="0.045" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                </body>
+              </body>
+              <geom name="left_upper_arm_collision" type="capsule" fromto="0 0 0 0 0 -0.22" size="0.05" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+            </body>
+          </body>
+        </body>
+        <body name="shoulder_pitch_r_link" pos="0 -0.1444 0.37712" quat="0.999048 -0.0436192 0 0" gravcomp="1">
+          <inertial pos="0.007494 -0.064184 -2e-05" quat="0.138986 0.691655 -0.140135 0.694737" diaginertia="0.001247 0.00108933 0.00101366" mass="1.0327" />
+          <joint name="shoulder_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="-2.96706 2.96706" actuatorfrcrange="-91 91" />
+          <body name="shoulder_roll_r_link" pos="0 -0.068 0" gravcomp="1">
+            <inertial pos="0.002389 -0.002259 -0.048236" quat="0.703317 0.101863 0.0770166 0.699313" diaginertia="0.00131352 0.00100748 0.000904004" mass="0.440997" />
+            <joint name="shoulder_roll_r_joint" pos="0 0 0" axis="1 0 0" range="-2.61799 0.261799" actuatorfrcrange="-95 95" />
+            <body name="shoulder_yaw_r_link" pos="0 0 -0.1025" gravcomp="1">
+              <inertial pos="0.008319 -0.002686 -0.112525" quat="0.995878 -0.0242664 -0.0546699 0.0681906" diaginertia="0.00974687 0.00961144 0.00120969" mass="1.36503" />
+              <joint name="shoulder_yaw_r_joint" pos="0 0 0" axis="0 0 1" range="-2.96706 2.96706" actuatorfrcrange="-35 35" />
+              <body name="elbow_pitch_r_link" pos="0.02 0 -0.1975" gravcomp="1">
+                <inertial pos="-0.014694 7.2e-05 -0.026081" quat="0.379479 0.379625 -0.601424 0.591752" diaginertia="0.000406631 0.0003754 0.00022197" mass="0.246311" />
+                <joint name="elbow_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="-2.61799 0.261799" actuatorfrcrange="-35 35" />
+                <body name="elbow_yaw_r_link" pos="-0.02 0 -0.0543" gravcomp="1">
+                  <inertial pos="0.000158 -0.001503 -0.069535" quat="0.999822 -0.0181014 -0.00149408 0.00511209" diaginertia="0.00310803 0.00303822 0.000576752" mass="0.986828" />
+                  <joint name="elbow_yaw_r_joint" pos="0 0 0" axis="0 0 1" range="-2.96706 2.96706" actuatorfrcrange="-24 24" />
+                  <body name="wrist_pitch_r_link" pos="0 0 -0.1887" gravcomp="1">
+                    <inertial pos="0.005362 -0.00064 -0.018812" quat="0.334417 0.632563 0.26898 0.644732" diaginertia="0.000114565 0.000108775 7.06597e-05" mass="0.262007" />
+                    <joint name="wrist_pitch_r_joint" pos="0 0 0" axis="0 1 0" range="-0.785398 1.0472" actuatorfrcrange="-6.3 6.3" />
+                    <body name="wrist_roll_r_link" pos="0 0 -0.02" gravcomp="1">
+                      <inertial pos="0.000801 -8.4e-05 -0.029302" quat="0.506055 0.49387 0.49387 0.506055" diaginertia="0.000116 0.000110024 6.89756e-05" mass="0.131751" />
+                      <joint name="wrist_roll_r_joint" pos="0 0 0" axis="1 0 0" range="-1.309 1.65806" actuatorfrcrange="-6.3 6.3" />
+                      <body name="right_tcp_link" pos="0 0 -0.0848" gravcomp="1">
+                        <inertial pos="0.000415 -0.000651 0.017052" quat="0.34738 0.599399 -0.338488 0.636768" diaginertia="0.000109077 8.72313e-05 8.26919e-05" mass="0.218186" />
+                        <body name="R_base_link" quat="0.000563088 0.707107 0.707106 0.000563088" gravcomp="1">
+                          <inertial pos="0.00252515 -0.00196005 0.0660468" quat="0.999566 0.00534839 -0.00355008 0.0287623" diaginertia="0.000598657 0.000500485 0.000184613" mass="0.38756" />
+                          <geom name="right_palm_mesh_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="R_base_link" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                          <body name="right_thumb_1" pos="0.01696 0.02045 0.06635" gravcomp="1">
+                            <inertial pos="0.000853491 0.00482217 -0.00482" quat="0.62265 0.746734 -0.185656 -0.142219" diaginertia="2.12995e-07 1.70477e-07 1.23818e-07" mass="0.00483" />
+                            <joint name="right_thumb_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.24616" actuatorfrcrange="-50 50" />
+                            <geom name="right_thumb_1_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_thumb_1" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            <body name="right_thumb_2" pos="0.010735 0.0090002 -0.0065" quat="0.561736 0.561738 0.429479 0.429477" gravcomp="1">
+                              <inertial pos="0.0194641 0.016298 -0.00803857" quat="0.638977 0.30145 -0.639673 0.302745" diaginertia="1.70013e-05 1.42936e-05 5.29608e-06" mass="0.05759" />
+                              <joint name="right_thumb_2_joint" pos="0 0 0" axis="0 0 1" range="0 0.48" actuatorfrcrange="-50 50" />
+                              <geom name="right_thumb_2_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_thumb_2" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                              <body name="right_thumb_3" pos="0.037617 0.041486 -0.0008" gravcomp="1">
+                                <inertial pos="0.00946652 0.00207631 -0.00720001" quat="0.540569 0.455787 -0.540629 0.45581" diaginertia="1.28966e-06 1.22915e-06 5.82719e-07" mass="0.00985" />
+                                <joint name="right_thumb_3_joint" pos="0 0 0" axis="0 0 1" range="0 0.3578" actuatorfrcrange="-50 50" damping="0.8" />
+                                <geom name="right_thumb_3_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_thumb_3" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                                <body name="right_thumb_4" pos="0.014957 0.017012 -0.0012" gravcomp="1">
+                                  <inertial pos="0.00604905 0.00861523 -0.00600329" quat="0.552019 0.437851 -0.554425 0.442915" diaginertia="3.37471e-07 3.27117e-07 1.19552e-07" mass="0.00552" />
+                                  <joint name="right_thumb_4_joint" pos="0 0 0" axis="0 0 1" range="0 0.2775" actuatorfrcrange="-50 50" damping="0.8" />
+                                  <geom name="right_thumb_4_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_thumb_4" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="right_index_1" pos="-0.000285 0.020275 0.136946" quat="0.719336 0.694662 0 0" gravcomp="1">
+                            <inertial pos="0.000852715 0.0119736 -0.00599987" quat="0.525442 0.472889 -0.526818 0.471963" diaginertia="2.05873e-06 1.9562e-06 5.46223e-07" mass="0.01229" />
+                            <joint name="right_index_1_joint" pos="0 0 0" axis="0 -0.069756 -0.997564" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <geom name="right_index_1_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_index_1" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            <body name="right_index_2" pos="0.008099 0.031095 -0.001" gravcomp="1">
+                              <inertial pos="0.00408343 0.0192601 -0.005" quat="0.596349 0.380057 -0.596308 0.379923" diaginertia="1.14024e-06 1.12462e-06 1.08348e-07" mass="0.00633" />
+                              <joint name="right_index_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" damping="0.8" />
+                              <geom name="right_index_2_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_index_2" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            </body>
+                          </body>
+                          <body name="right_middle_1" pos="-0.000285 0.00295 0.1371" quat="0.707105 0.707108 0 0" gravcomp="1">
+                            <inertial pos="0.000852856 0.0119736 -0.00399985" quat="0.524217 0.472069 -0.528046 0.472773" diaginertia="2.05874e-06 1.95622e-06 5.46242e-07" mass="0.01229" />
+                            <joint name="right_middle_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <geom name="right_middle_1_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_middle_1" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            <body name="right_middle_2" pos="0.0081 0.031095 0.001" gravcomp="1">
+                              <inertial pos="0.00471135 0.0203466 -0.00500003" quat="0.597374 0.378343 -0.597374 0.378343" diaginertia="1.43878e-06 1.42175e-06 1.17529e-07" mass="0.00681" />
+                              <joint name="right_middle_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" damping="0.8" />
+                              <geom name="right_middle_2_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_middle_2" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            </body>
+                          </body>
+                          <body name="right_ring_1" pos="-0.000285 -0.018271 0.136282" quat="0.688339 0.725389 0 0" gravcomp="1">
+                            <inertial pos="0.000852458 0.0119735 -0.00599989" quat="0.52521 0.472652 -0.527043 0.472207" diaginertia="2.05873e-06 1.95619e-06 5.46217e-07" mass="0.01229" />
+                            <joint name="right_ring_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <geom name="right_ring_1_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_ring_1" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            <body name="right_ring_2" pos="0.008099 0.031095 -0.001" gravcomp="1">
+                              <inertial pos="0.00408287 0.01926 -0.00499998" quat="0.579084 0.405513 -0.61244 0.35375" diaginertia="1.14024e-06 1.12462e-06 1.0835e-07" mass="0.00633" />
+                              <joint name="right_ring_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" damping="0.8" />
+                              <geom name="right_ring_2_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_ring_2" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            </body>
+                          </body>
+                          <body name="right_little_1" pos="-0.000285 -0.037422 0.13446" quat="0.669137 0.743139 0 0" gravcomp="1">
+                            <inertial pos="0.000851611 0.0119735 -0.00599989" quat="0.525652 0.473057 -0.526567 0.471841" diaginertia="2.05873e-06 1.95619e-06 5.4622e-07" mass="0.01229" />
+                            <joint name="right_little_1_joint" pos="0 0 0" axis="0 0 -1" range="0 1.333" actuatorfrcrange="-50 50" />
+                            <geom name="right_little_1_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_little_1" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            <body name="right_little_2" pos="0.008097 0.031096 -0.001" gravcomp="1">
+                              <inertial pos="0.0027393 0.01616 -0.00499668" quat="0.595524 0.381249 -0.595524 0.381249" diaginertia="6.6906e-07 6.5812e-07 8.59895e-08" mass="0.00525" />
+                              <joint name="right_little_2_joint" pos="0 0 0" axis="0 0 -1" range="0 1.527" actuatorfrcrange="-50 50" damping="0.8" />
+                              <geom name="right_little_2_collision" type="mesh" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0" material="robot_calibration_start" mesh="right_little_2" rgba="1 1 1 1" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                            </body>
+                          </body>
+                          <site name="grasp_center_site" type="sphere" pos="0 0 0.105" size="0.005" group="4" rgba="0.1 1 0.2 0.8" />
+                          <site name="approach_direction_site" type="capsule" fromto="0 0 0.105 0 0 0.155" size="0.002" group="4" rgba="1 0.8 0.1 0.8" />
+                        </body>
+                        <geom name="right_tcp_collision" type="sphere" pos="0 0 0" size="0.028" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                        <frame name="right_tcp_frame" pos="0 0 0" quat="1 0 0 0">
+                          <site name="right_tcp_site" type="sphere" pos="0 0 0" size="0.004" group="4" rgba="0.1 0.8 1 0.8" />
+                        </frame>
+                      </body>
+                      <geom name="right_wrist_roll_collision" type="sphere" pos="0 0 -0.03" size="0.038" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                    </body>
+                    <geom name="right_wrist_pitch_collision" type="capsule" fromto="0 0 0 0 0 -0.055" size="0.035" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                  </body>
+                  <geom name="right_forearm_collision" type="capsule" fromto="0 0 0 0 0 -0.15" size="0.042" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+                </body>
+                <geom name="right_elbow_collision" type="sphere" pos="0 0 -0.02" size="0.055" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+              </body>
+              <geom name="right_upper_arm_collision" type="capsule" fromto="0 0 0 0 0 -0.22" size="0.05" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+            </body>
+            <geom name="right_shoulder_roll_collision" type="capsule" fromto="0 0 0 0 0 -0.1" size="0.06" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+          </body>
+          <geom name="right_shoulder_pitch_collision" type="sphere" pos="0 0 -0.02" size="0.07" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+        </body>
+        <body name="camera_body_front_link" pos="0.090583 0.02375 0.039012" quat="0.337388 -0.621424 0.621426 -0.337389">
+          <inertial pos="0.023316 0.000241 -0.013373" quat="-0.268885 0.649145 -0.272301 0.657392" diaginertia="0.000127018 0.000127 1.49821e-05" mass="0.1" />
+        </body>
+        <body name="camera_body_back_link" pos="-0.11363 0.02375 0.2746" quat="0.379936 0.596361 -0.596363 -0.379937">
+          <inertial pos="0.023316 0.000241 -0.013373" quat="-0.268885 0.649145 -0.272301 0.657392" diaginertia="0.000127018 0.000127 1.49821e-05" mass="0.1" />
+        </body>
+        <geom name="torso_collision" type="box" pos="0 0 0.2" size="0.15 0.12 0.24" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+      </body>
+      <body name="imu_link" pos="0.0499 -0.0358 -0.03194">
+        <inertial pos="-0.006331 -0.007725 -0.008045" quat="0 0.707107 0 0.707107" diaginertia="4e-06 3e-06 2e-06" mass="0.02" />
+      </body>
+      <geom name="pelvis_collision" type="box" pos="0 0 -0.07" size="0.12 0.1 0.1" conaffinity="6" contype="1" density="0" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="robot_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+    </body>
+    <frame name="target_tcp_frame" pos="0.4122919 -0.27995379 0.8728" quat="0.7071067812 0 -0.7071067812 0">
+      <site name="target_tcp_site" type="sphere" pos="0 0 0" size="0.006" group="4" rgba="1 0.1 0.1 0.8" />
+    </frame>
+    <body name="table">
+      <geom name="table_top_collision" type="box" pos="0.7 0 0.7958" size="0.4 0.45 0.025" conaffinity="3" contype="4" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="table_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+      <geom name="table_leg_collision_0" type="box" pos="0.325 -0.425 0.3854" size="0.025 0.025 0.3854" conaffinity="3" contype="4" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="table_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+      <geom name="table_leg_collision_1" type="box" pos="0.325 0.425 0.3854" size="0.025 0.025 0.3854" conaffinity="3" contype="4" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="table_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+      <geom name="table_leg_collision_2" type="box" pos="1.075 -0.425 0.3854" size="0.025 0.025 0.3854" conaffinity="3" contype="4" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="table_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+      <geom name="table_leg_collision_3" type="box" pos="1.075 0.425 0.3854" size="0.025 0.025 0.3854" conaffinity="3" contype="4" friction="1 0.005 0.0001" gap="0" group="3" margin="0.002" material="table_calibration_start" solimp="0.9 0.95 0.001" solref="0.02 1" />
+    </body>
+    <body name="cylinder" pos="0.5252919 -0.26195379 0.8728">
+      <freejoint name="cylinder_free_joint" />
+      <geom name="cylinder_collision" type="box" size="0.00883883476483 0.00883883476483 0.05" conaffinity="5" condim="4" contype="2" friction="0.8 0.005 0.0001" gap="0" group="3" margin="0" mass="0.115" material="cylinder_calibration_start" solimp="0.8 0.92 0.005" solref="0.04 1" />
+      <site name="cylinder_axis_site" type="cylinder" size="0.0025 0.05" group="4" rgba="1 1 0 0.5" />
+    </body>
+  </worldbody>
+  <custom>
+    <text name="asset.fixed_base" data="pelvis" />
+    <text name="asset.fixed_non_task_joints" data="hip_roll_l_joint,hip_pitch_l_joint,hip_yaw_l_joint,knee_pitch_l_joint,ankle_pitch_l_joint,ankle_roll_l_joint,hip_roll_r_joint,hip_pitch_r_joint,hip_yaw_r_joint,knee_pitch_r_joint,ankle_pitch_r_joint,ankle_roll_r_joint,body_yaw_joint,head_yaw_joint,head_pitch_joint,head_roll_joint,shoulder_pitch_l_joint,shoulder_roll_l_joint,shoulder_yaw_l_joint,elbow_pitch_l_joint,elbow_yaw_l_joint,wrist_pitch_l_joint,wrist_roll_l_joint,left_thumb_1_joint,left_thumb_2_joint,left_thumb_3_joint,left_thumb_4_joint,left_index_1_joint,left_index_2_joint,left_middle_1_joint,left_middle_2_joint,left_ring_1_joint,left_ring_2_joint,left_little_1_joint,left_little_2_joint" />
+    <text name="asset.gravity_compensation.root_body" data="shoulder_pitch_r_link" />
+    <numeric name="asset.gravity_compensation.factor" data="1" />
+    <numeric name="asset.gravity_compensation.body_count" data="21" />
+    <text name="contact_group.right_hand_observation_links" data="right_thumb_1,right_thumb_2,right_thumb_3,right_thumb_4,right_index_1,right_index_2,right_middle_1,right_middle_2,right_ring_1,right_ring_2,right_little_1,right_little_2" />
+    <text name="contact_group.thumb_side" data="right_palm_mesh_collision,right_thumb_1_collision,right_thumb_2_collision,right_thumb_3_collision,right_thumb_4_collision" />
+    <text name="contact_group.four_finger_opposing" data="right_index_1_collision,right_index_2_collision,right_middle_1_collision,right_middle_2_collision,right_ring_1_collision,right_ring_2_collision,right_little_1_collision,right_little_2_collision" />
+    <text name="contact_group.right_arm" data="right_shoulder_pitch_collision,right_shoulder_roll_collision,right_upper_arm_collision,right_elbow_collision,right_forearm_collision,right_wrist_pitch_collision,right_wrist_roll_collision" />
+    <text name="contact_group.tcp" data="right_tcp_collision" />
+    <text name="contact_group.reach_diagnostic" data="right_shoulder_pitch_collision,right_shoulder_roll_collision,right_upper_arm_collision,right_elbow_collision,right_forearm_collision,right_wrist_pitch_collision,right_wrist_roll_collision,right_tcp_collision" />
+    <text name="contact_group.robot" data="robot" />
+    <text name="contact_group.table" data="table_top_collision,table_leg_collision_0,table_leg_collision_1,table_leg_collision_2,table_leg_collision_3" />
+    <text name="contact_group.cylinder" data="cylinder_collision" />
+    <text name="contact_group.non_task_body" data="pelvis_collision,torso_collision,head_collision,left_upper_leg_collision,left_lower_leg_collision,right_upper_leg_collision,right_lower_leg_collision,left_upper_arm_collision,left_forearm_collision,left_palm_collision" />
+    <text name="contact_phase.reach" data="{&quot;allowed_pairs&quot;:[],&quot;illegal_robot_groups&quot;:[&quot;right_arm&quot;,&quot;tcp&quot;,&quot;non_task_body&quot;]}" />
+    <text name="contact_phase.script" data="{&quot;allowed_pairs&quot;:[[&quot;thumb_side&quot;,&quot;cylinder&quot;],[&quot;four_finger_opposing&quot;,&quot;cylinder&quot;]],&quot;illegal_robot_groups&quot;:[&quot;right_arm&quot;,&quot;tcp&quot;,&quot;non_task_body&quot;]}" />
+    <numeric name="actuator.velocity_limit_rad_s.shoulder_pitch_r_joint_position" data="9" />
+    <numeric name="actuator.velocity_limit_rad_s.shoulder_roll_r_joint_position" data="3.8" />
+    <numeric name="actuator.velocity_limit_rad_s.shoulder_yaw_r_joint_position" data="5" />
+    <numeric name="actuator.velocity_limit_rad_s.elbow_pitch_r_joint_position" data="5" />
+    <numeric name="actuator.velocity_limit_rad_s.elbow_yaw_r_joint_position" data="10" />
+    <numeric name="actuator.velocity_limit_rad_s.wrist_pitch_r_joint_position" data="7" />
+    <numeric name="actuator.velocity_limit_rad_s.wrist_roll_r_joint_position" data="7" />
+    <numeric name="actuator.velocity_limit_rad_s.right_thumb_1_joint_position" data="1" />
+    <numeric name="actuator.velocity_limit_rad_s.right_thumb_2_joint_position" data="1" />
+    <numeric name="actuator.velocity_limit_rad_s.right_index_1_joint_position" data="1" />
+    <numeric name="actuator.velocity_limit_rad_s.right_middle_1_joint_position" data="1" />
+    <numeric name="actuator.velocity_limit_rad_s.right_ring_1_joint_position" data="1" />
+    <numeric name="actuator.velocity_limit_rad_s.right_little_1_joint_position" data="1" />
+    <text name="actuator.calibration_version" data="mujoco_position_actuator_calibration_v2" />
+    <text name="actuator.calibration_status" data="starting_point_unvalidated" />
+    <text name="asset.right_hand_mimic_source" data="source/tiangong2.0_pro_with_hands.urdf" />
+    <text name="asset.right_hand_mimic_constraint_calibration" data="right_hand_mimic_equality_v2" />
+    <numeric name="material.restitution.robot_calibration_start" data="0" />
+    <numeric name="material.restitution.table_calibration_start" data="0" />
+    <numeric name="material.restitution.cylinder_calibration_start" data="0" />
+    <text name="physics.version" data="mujoco_cpu_physics_v3" />
+    <text name="physics.calibration_status" data="starting_point_unvalidated" />
+    <text name="asset.generator_version" data="tienkung2_pro_asset_pipeline_v3" />
+    <text name="asset.patch_version" data="tienkung2_pro_mjcf_patch_v5" />
+    <text name="asset.contract_version" data="tienkung2_pro_mujoco_asset_v3" />
+    <text name="asset.source_joint_hierarchy" data="joint_hierarchy.json" />
+    <text name="asset.joint_role.active_arm" data="shoulder_pitch_r_joint,shoulder_roll_r_joint,shoulder_yaw_r_joint,elbow_pitch_r_joint,elbow_yaw_r_joint,wrist_pitch_r_joint,wrist_roll_r_joint" />
+    <text name="asset.joint_role.active_hand" data="right_thumb_1_joint,right_thumb_2_joint,right_index_1_joint,right_middle_1_joint,right_ring_1_joint,right_little_1_joint" />
+    <text name="asset.joint_role.mimic_follower" data="right_thumb_3_joint,right_thumb_4_joint,right_index_2_joint,right_middle_2_joint,right_ring_2_joint,right_little_2_joint" />
+    <text name="asset.joint_role.fixed_non_task" data="hip_roll_l_joint,hip_pitch_l_joint,hip_yaw_l_joint,knee_pitch_l_joint,ankle_pitch_l_joint,ankle_roll_l_joint,hip_roll_r_joint,hip_pitch_r_joint,hip_yaw_r_joint,knee_pitch_r_joint,ankle_pitch_r_joint,ankle_roll_r_joint,body_yaw_joint,head_yaw_joint,head_pitch_joint,head_roll_joint,shoulder_pitch_l_joint,shoulder_roll_l_joint,shoulder_yaw_l_joint,elbow_pitch_l_joint,elbow_yaw_l_joint,wrist_pitch_l_joint,wrist_roll_l_joint,left_thumb_1_joint,left_thumb_2_joint,left_thumb_3_joint,left_thumb_4_joint,left_index_1_joint,left_index_2_joint,left_middle_1_joint,left_middle_2_joint,left_ring_1_joint,left_ring_2_joint,left_little_1_joint,left_little_2_joint" />
+  </custom>
+  <equality>
+    <joint name="fixed__hip_roll_l_joint" joint1="hip_roll_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__hip_pitch_l_joint" joint1="hip_pitch_l_joint" polycoef="-0.5 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__hip_yaw_l_joint" joint1="hip_yaw_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__knee_pitch_l_joint" joint1="knee_pitch_l_joint" polycoef="1 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__ankle_pitch_l_joint" joint1="ankle_pitch_l_joint" polycoef="-0.5 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__ankle_roll_l_joint" joint1="ankle_roll_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__hip_roll_r_joint" joint1="hip_roll_r_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__hip_pitch_r_joint" joint1="hip_pitch_r_joint" polycoef="-0.5 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__hip_yaw_r_joint" joint1="hip_yaw_r_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__knee_pitch_r_joint" joint1="knee_pitch_r_joint" polycoef="1 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__ankle_pitch_r_joint" joint1="ankle_pitch_r_joint" polycoef="-0.5 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__ankle_roll_r_joint" joint1="ankle_roll_r_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__body_yaw_joint" joint1="body_yaw_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__head_yaw_joint" joint1="head_yaw_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__head_pitch_joint" joint1="head_pitch_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__head_roll_joint" joint1="head_roll_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__shoulder_pitch_l_joint" joint1="shoulder_pitch_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__shoulder_roll_l_joint" joint1="shoulder_roll_l_joint" polycoef="0.1 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__shoulder_yaw_l_joint" joint1="shoulder_yaw_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__elbow_pitch_l_joint" joint1="elbow_pitch_l_joint" polycoef="-0.3 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__elbow_yaw_l_joint" joint1="elbow_yaw_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__wrist_pitch_l_joint" joint1="wrist_pitch_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__wrist_roll_l_joint" joint1="wrist_roll_l_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_thumb_1_joint" joint1="left_thumb_1_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_thumb_2_joint" joint1="left_thumb_2_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_thumb_3_joint" joint1="left_thumb_3_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_thumb_4_joint" joint1="left_thumb_4_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_index_1_joint" joint1="left_index_1_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_index_2_joint" joint1="left_index_2_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_middle_1_joint" joint1="left_middle_1_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_middle_2_joint" joint1="left_middle_2_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_ring_1_joint" joint1="left_ring_1_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_ring_2_joint" joint1="left_ring_2_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_little_1_joint" joint1="left_little_1_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="fixed__left_little_2_joint" joint1="left_little_2_joint" polycoef="0 0 0 0 0" solimp="0.9 0.95 0.001" solref="0.005 1" />
+    <joint name="mimic__right_thumb_3_joint" joint1="right_thumb_3_joint" joint2="right_thumb_2_joint" polycoef="0 1.1425 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+    <joint name="mimic__right_thumb_4_joint" joint1="right_thumb_4_joint" joint2="right_thumb_3_joint" polycoef="0 0.7508 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+    <joint name="mimic__right_index_2_joint" joint1="right_index_2_joint" joint2="right_index_1_joint" polycoef="0 1.1169 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+    <joint name="mimic__right_middle_2_joint" joint1="right_middle_2_joint" joint2="right_middle_1_joint" polycoef="0 1.1169 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+    <joint name="mimic__right_ring_2_joint" joint1="right_ring_2_joint" joint2="right_ring_1_joint" polycoef="0 1.1169 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+    <joint name="mimic__right_little_2_joint" joint1="right_little_2_joint" joint2="right_little_1_joint" polycoef="0 1.1169 0 0 0" solimp="0.999 0.9999 0.0001" solref="-10000000 -20000" />
+  </equality>
+  <contact>
+    <exclude body1="R_base_link" body2="table" />
+    <exclude body1="right_thumb_1" body2="table" />
+    <exclude body1="right_thumb_2" body2="table" />
+    <exclude body1="right_thumb_3" body2="table" />
+    <exclude body1="right_thumb_4" body2="table" />
+    <exclude body1="right_index_1" body2="table" />
+    <exclude body1="right_index_2" body2="table" />
+    <exclude body1="right_middle_1" body2="table" />
+    <exclude body1="right_middle_2" body2="table" />
+    <exclude body1="right_ring_1" body2="table" />
+    <exclude body1="right_ring_2" body2="table" />
+    <exclude body1="right_little_1" body2="table" />
+    <exclude body1="right_little_2" body2="table" />
+  </contact>
+  <size nconmax="4096" nuser_actuator="4" />
+  <actuator>
+    <position name="shoulder_pitch_r_joint_position" joint="shoulder_pitch_r_joint" ctrlrange="-2.96705972839 2.96705972839" forcerange="-90 90" kp="120" kv="4.5" ctrllimited="true" forcelimited="true" user="9 90 120 4.5" />
+    <position name="shoulder_roll_r_joint_position" joint="shoulder_roll_r_joint" ctrlrange="-2.61799387799 0.261799387799" forcerange="-90 90" kp="40" kv="2.25" ctrllimited="true" forcelimited="true" user="3.8 90 40 2.25" />
+    <position name="shoulder_yaw_r_joint_position" joint="shoulder_yaw_r_joint" ctrlrange="-2.96705972839 2.96705972839" forcerange="-34 34" kp="20" kv="1.5" ctrllimited="true" forcelimited="true" user="5 34 20 1.5" />
+    <position name="elbow_pitch_r_joint_position" joint="elbow_pitch_r_joint" ctrlrange="-2.61799387799 0.261799387799" forcerange="-34 34" kp="120" kv="5" ctrllimited="true" forcelimited="true" user="5 34 120 5" />
+    <position name="elbow_yaw_r_joint_position" joint="elbow_yaw_r_joint" ctrlrange="-2.96705972839 2.96705972839" forcerange="-23 23" kp="20" kv="1.5" ctrllimited="true" forcelimited="true" user="10 23 20 1.5" />
+    <position name="wrist_pitch_r_joint_position" joint="wrist_pitch_r_joint" ctrlrange="-0.785398163397 1.0471975512" forcerange="-6 6" kp="60" kv="2.5" ctrllimited="true" forcelimited="true" user="7 6 60 2.5" />
+    <position name="wrist_roll_r_joint_position" joint="wrist_roll_r_joint" ctrlrange="-1.308996939 1.65806278939" forcerange="-6 6" kp="10" kv="0.75" ctrllimited="true" forcelimited="true" user="7 6 10 0.75" />
+    <position name="right_thumb_1_joint_position" joint="right_thumb_1_joint" ctrlrange="0 1.246165" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+    <position name="right_thumb_2_joint_position" joint="right_thumb_2_joint" ctrlrange="0 0.313172866521" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+    <position name="right_index_1_joint_position" joint="right_index_1_joint" ctrlrange="0 1.333" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+    <position name="right_middle_1_joint_position" joint="right_middle_1_joint" ctrlrange="0 1.333" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+    <position name="right_ring_1_joint_position" joint="right_ring_1_joint" ctrlrange="0 1.333" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+    <position name="right_little_1_joint_position" joint="right_little_1_joint" ctrlrange="0 1.333" forcerange="-5 5" kp="10" kv="0.8" ctrllimited="true" forcelimited="true" user="1 5 10 0.8" />
+  </actuator>
+  <option gravity="0 0 -9.81" integrator="implicitfast" iterations="8" ls_iterations="4" noslip_iterations="4" solver="Newton" timestep="0.005" tolerance="1e-08" />
+  <keyframe>
+    <key name="robot_and_scene_home" ctrl="-0.126373895721 -0.0660230871483 -0.00545814196598 -1.1857244905 -0.498595023188 -0.278649390763 0.0409815918281 0 0 0 0 0 0" qpos="0 -0.5 0 1 -0.5 0 0 -0.5 0 1 -0.5 0 0 0 0 0 0 0.1 0 -0.3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.126373895721 -0.0660230871483 -0.00545814196598 -1.1857244905 -0.498595023188 -0.278649390763 0.0409815918281 0 0 0 0 0 0 0 0 0 0 0 0 0.5252919 -0.26195379 0.8728 1 0 0 0" />
+  </keyframe>
+</mujoco>

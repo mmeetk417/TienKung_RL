@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tienkung2_pro_mjcf_patch_v2",
+  "title": "TienKung 2 Pro deterministic MJCF patch set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "patch_version",
+    "asset_contract_version",
+    "application_order",
+    "fixed_base",
+    "joint_posture",
+    "gravity_compensation",
+    "actuators",
+    "mimic",
+    "sites",
+    "collisions",
+    "contact_groups",
+    "scene"
+  ],
+  "properties": {
+    "schema_version": {"const": "tienkung2_pro_patch_schema_v2"},
+    "patch_version": {"type": "string", "minLength": 1},
+    "asset_contract_version": {"type": "string", "minLength": 1},
+    "application_order": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": [
+        "fixed_base", "joint_posture", "gravity_compensation", "visual_only", "collisions",
+        "contact_groups", "sites", "actuators", "mimic", "scene", "metadata"
+      ]}
+    },
+    "fixed_base": {"type": "object"},
+    "joint_posture": {"type": "object"},
+    "gravity_compensation": {"type": "object"},
+    "actuators": {"type": "object"},
+    "mimic": {"type": "object"},
+    "sites": {"type": "object"},
+    "collisions": {"type": "object"},
+    "contact_groups": {"type": "object"},
+    "scene": {"type": "object"}
+  }
+}

@@ -1,0 +1,39 @@
+schema_version: tienkung2_pro_contact_groups_v1
+groups:
+  right_hand_observation_links:
+    kind: body
+    members: [right_thumb_1, right_thumb_2, right_thumb_3, right_thumb_4, right_index_1, right_index_2, right_middle_1, right_middle_2, right_ring_1, right_ring_2, right_little_1, right_little_2]
+  thumb_side:
+    kind: geom
+    members: [right_palm_mesh_collision, right_thumb_1_collision, right_thumb_2_collision, right_thumb_3_collision, right_thumb_4_collision]
+  four_finger_opposing:
+    kind: geom
+    members: [right_index_1_collision, right_index_2_collision, right_middle_1_collision, right_middle_2_collision, right_ring_1_collision, right_ring_2_collision, right_little_1_collision, right_little_2_collision]
+  right_arm:
+    kind: geom
+    members: [right_shoulder_pitch_collision, right_shoulder_roll_collision, right_upper_arm_collision, right_elbow_collision, right_forearm_collision, right_wrist_pitch_collision, right_wrist_roll_collision]
+  tcp:
+    kind: geom
+    members: [right_tcp_collision]
+  reach_diagnostic:
+    kind: geom
+    members: [right_shoulder_pitch_collision, right_shoulder_roll_collision, right_upper_arm_collision, right_elbow_collision, right_forearm_collision, right_wrist_pitch_collision, right_wrist_roll_collision, right_tcp_collision]
+  robot:
+    kind: collision_mask
+    members: [robot]
+  table:
+    kind: geom
+    members: [table_top_collision, table_leg_collision_0, table_leg_collision_1, table_leg_collision_2, table_leg_collision_3]
+  cylinder:
+    kind: geom
+    members: [cylinder_collision]
+  non_task_body:
+    kind: geom
+    members: [pelvis_collision, torso_collision, head_collision, left_upper_leg_collision, left_lower_leg_collision, right_upper_leg_collision, right_lower_leg_collision, left_upper_arm_collision, left_forearm_collision, left_palm_collision]
+phase_rules:
+  reach:
+    allowed_pairs: []
+    illegal_robot_groups: [right_arm, tcp, non_task_body]
+  script:
+    allowed_pairs: [[thumb_side, cylinder], [four_finger_opposing, cylinder]]
+    illegal_robot_groups: [right_arm, tcp, non_task_body]

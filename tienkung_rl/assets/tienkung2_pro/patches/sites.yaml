@@ -1,0 +1,41 @@
+schema_version: tienkung2_pro_sites_v1
+frames:
+  - name: right_tcp_frame
+    body: right_tcp_link
+    pos_m: [0.0, 0.0, 0.0]
+    quaternion_wxyz: [1.0, 0.0, 0.0, 0.0]
+  - name: target_tcp_frame
+    body: world
+    # Calibrated side-grasp target, shifted 0.003 m along world -X and
+    # 0.003 m along world -Y from the calibration baseline.
+    pos_m: [0.41229190, -0.27995379, 0.8728]
+    quaternion_wxyz: [0.7071067812, 0.0, -0.7071067812, 0.0]
+sites:
+  - name: right_tcp_site
+    body: right_tcp_link
+    type: sphere
+    pos_m: [0.0, 0.0, 0.0]
+    size_m: [0.004]
+    rgba: [0.1, 0.8, 1.0, 0.8]
+    frame: right_tcp_frame
+  - name: grasp_center_site
+    body: R_base_link
+    type: sphere
+    pos_m: [0.0, 0.0, 0.105]
+    size_m: [0.005]
+    rgba: [0.1, 1.0, 0.2, 0.8]
+  - name: approach_direction_site
+    body: R_base_link
+    type: capsule
+    fromto_m: [0.0, 0.0, 0.105, 0.0, 0.0, 0.155]
+    size_m: [0.002]
+    rgba: [1.0, 0.8, 0.1, 0.8]
+  - name: target_tcp_site
+    body: world
+    type: sphere
+    # The site is at the target frame origin; the frame itself is the target
+    # TCP pose for a side-on cylindrical grasp.
+    pos_m: [0.0, 0.0, 0.0]
+    size_m: [0.006]
+    rgba: [1.0, 0.1, 0.1, 0.8]
+    frame: target_tcp_frame

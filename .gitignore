@@ -1,0 +1,32 @@
+# Python and tooling caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+.venv/
+
+# Editors
+.vscode/
+.idea/
+*.bak
+
+# Generated reports, logs, and training outputs
+logs/
+runs/
+outputs/
+reports/
+wandb/
+MUJOCO_LOG.TXT
+
+# Checkpoints and exported policies
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# System files
+.DS_Store
